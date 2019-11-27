@@ -1,3 +1,7 @@
+@font-face {
+    font-family:Titles;
+    src: url("assets/fonts/Bison-Bold(PersonalUse).ttf")
+}
 .App {
   text-align: center;
 }
@@ -19,4 +23,28 @@
 
 .App-link {
   color: #09d3ac;
+}
+.nav-bg{
+  background-color: #050526;
+    height:11vh;
+    width:100vw;
+    padding:20px 40px;
+}
+.title-font{
+    font-family:"Titles", sans-serif;
+}
+
+.nav-text{
+
+    vertical-align: center;
+    margin-left:3vw;
+    margin-top:50px;
+    padding-top:15px;
+    font-size:2.75rem;
+}
+
+.nav-right{
+    position:absolute;
+    right:5vw;
+    top:-55px;
 }
