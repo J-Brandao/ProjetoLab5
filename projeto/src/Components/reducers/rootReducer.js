@@ -5,7 +5,7 @@ import {combineReducers} from 'redux';
 //import {firestoreReducer} from 'redux-firestore';
 //import {firebaseReducer} from 'react-redux-firebase';
 //authReducer update das informações todas
-//utilizadorReducer upadate da informação nas propridades do utilizador dentro do state
+//utiReducer upadate da informação nas propridades do utilizador dentro do state
 
 const rootReducer = combineReducers ({
     auth: authReducer,

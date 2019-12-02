@@ -3,7 +3,6 @@
 const initState = {
 
 };
-
 const utiReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_UTI':
