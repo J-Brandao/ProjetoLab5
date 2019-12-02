@@ -1,7 +1,7 @@
 import React from 'react';
 import {Form} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import logo from '../../assets/Img/Logo.svg';
+//import logo from '../../assets/Img/Logo.svg';
 //import {connect} from 'react-redux';
 //import {entrou} from "../../store/actions/authAction";
 
@@ -23,19 +23,19 @@ class Entrar extends React.Component {
     render() {
 
         return (
-            <div className="container box">
+            <div className="container container-fluid noscroll box">
                 <div className="row justify-content-center">
-                    <div className="col-lg-4 p-5 caixalogin">
-                        <div className="w-50 mb-3">
+                    <div className="col-4 p-5 caixalogin">
+                        {/*<div className="w-50 mb-3">
                             <img src={logo} alt={logo} className="logo"/>
-                        </div>
-                        <Form id="entrar" onSubmit={this.handleSubmit}>
+                        </div>*/}
+                        <Form className="text-left" id="entrar" onSubmit={this.handleSubmit}>
                             <div className="welcome">
                     <span>
 						Bem-Vindo Agente
                     </span>
                             </div>
-                            <Form.Group className="input-field ">
+                            <Form.Group className="input-field">
                                 <Form.Label htmlFor="email">Email</Form.Label>
                                 <Form.Control type="email" id="email" placeholder="Email"
                                               onChange={this.handleChange}/>

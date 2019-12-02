@@ -21,9 +21,11 @@ function NavBar() {
                 <Nav className="justify-content-center">
                     <Nav.Item className="mr-2 pl-2 pr-2" style={nomeA}>Agente X</Nav.Item>
                     <Link className="text-decoration-none text-light" to='/entrar'>
-                    <Nav.Item className="mr-2 ml-2">Entrar</Nav.Item>
+                    <Nav.Item className="menu mr-2 ml-2">Entrar</Nav.Item>
                     </Link>
-                    <Nav.Item className="ml-2">Registo</Nav.Item>
+                    <Link className="text-decoration-none text-light" to='/registar'>
+                    <Nav.Item className="ml-2 mr-2">Registo</Nav.Item>
+                    </Link>
                     <Nav.Item className="ml-2">Sair</Nav.Item>
                 </Nav>
             </Navbar>

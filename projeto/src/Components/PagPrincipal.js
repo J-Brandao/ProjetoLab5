@@ -6,9 +6,9 @@ import '../PagPrinc.css';
 class PagPrincipal extends React.Component {
     render() {
         return (
-            <div className="mt-4 container container-fluid boxp">
-                <div className="row justify-content-center">
-                    <div className="col-lg-5 p-5 caixalogin">
+            <div className="mt-4 noscroll container container-fluid boxp">
+                <div className=" row justify-content-center">
+                    <div className="col-5 p-5 caixalogin">
                         <div className="w-50 mb-3">
                             <img src={logo} alt={logo} className="logo"/>
                         </div>

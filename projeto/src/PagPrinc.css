@@ -9,6 +9,9 @@ body {
     position: relative;
     left: 50%;
 }
+.noscroll {
+    overflow-x: hidden;
+}
 .boxp {
     color: #F3F3FF;
     position: absolute;
@@ -84,3 +87,10 @@ body {
     font-weight: bold;
 }
 
+.menu {
+    transition: all .2s ease-in-out;
+}
+
+.menu:hover {
+    color: #FF7900;
+}
