@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./Components/Navbar";
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Dashboard from './Components/Dashboard';
+import Entrar from './Components/auth/Entrar';
 
 class App extends React.Component {
   render() {
@@ -14,6 +15,8 @@ class App extends React.Component {
               <NavBar/>
               <Switch>
                   <Route exact path='/' component={Dashboard}/>
+                  <Route path='/entrar' component={Entrar}/>
+
               </Switch>
           </div>
           </BrowserRouter>

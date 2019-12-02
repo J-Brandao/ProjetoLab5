@@ -7,7 +7,7 @@ function NavBar() {
     const nomeA = {
         borderRadius: "10px",
         backgroundColor: "#072938",
-        fontFamily: "Roboto",
+        fontFamily: "Roboto, sans-serif",
         textTransform: "uppercase"
     };
     return (
@@ -20,7 +20,10 @@ function NavBar() {
             <Navbar id="basic-navbar-nav">
                 <Nav className="justify-content-center">
                     <Nav.Item className="mr-2 pl-2 pr-2" style={nomeA}>Agente X</Nav.Item>
+                    <Link className="text-decoration-none text-light" to='/entrar'>
                     <Nav.Item className="mr-2 ml-2">Entrar</Nav.Item>
+                    </Link>
+                    <Nav.Item className="ml-2">Registo</Nav.Item>
                     <Nav.Item className="ml-2">Sair</Nav.Item>
                 </Nav>
             </Navbar>

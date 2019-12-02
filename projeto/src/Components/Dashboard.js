@@ -1,5 +1,6 @@
 import React from 'react';
 import PagPrincipal from "./PagPrincipal";
+import Entrar from "./auth/Entrar";
 
 
 class Dashboard extends React.Component{
@@ -8,6 +9,7 @@ class Dashboard extends React.Component{
             <div>
                 <PagPrincipal/>
             </div>
+
         )
     }
 }
