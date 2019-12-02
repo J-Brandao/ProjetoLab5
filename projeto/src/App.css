@@ -1,16 +1,9 @@
 @font-face {
     font-family:Titles;
-    src: url("assets/fonts/Bison-Bold(PersonalUse).ttf")
-}
-.App {
-  text-align: center;
+    src: url("assets/fonts/Bison-Bold(PersonalUse).ttf");
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
+/*.App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -19,17 +12,15 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}*/
+
+.navbar {
+    background-color: #05052D;
+    color: #F3F3FF !important;
+    font-family: "Titles", "Bison Bold";
+    font-size: 30px;
 }
 
-.App-link {
-  color: #09d3ac;
-}
-.nav-bg{
-  background-color: #050526;
-    height:11vh;
-    width:100vw;
-    padding:20px 40px;
-}
 .title-font{
     font-family:"Titles", sans-serif;
 }

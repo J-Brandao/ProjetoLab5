@@ -1,0 +1,86 @@
+body {
+    font-family: 'Roboto';
+    background-color: #F3F3FF;
+    height: 100%;
+    width: 100%;
+
+}
+.logo {
+    position: relative;
+    left: 50%;
+}
+.boxp {
+    color: #F3F3FF;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.box {
+    color: #F3F3FF;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.welcome {
+    color: #F3F3FF;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: bold;
+}
+.caixalogin {
+    background: rgb(5,5,45);
+    background: linear-gradient(-45deg, rgba(5,5,45,1) 0%, rgba(7, 49, 66, 0.93) 100%);
+    background-size: 400% 400%;
+    border-radius: 15px;
+    -webkit-box-shadow: 14px 14px 23px -19px rgba(0,0,0,0.47);
+    -moz-box-shadow: 14px 14px 23px -19px rgba(0,0,0,0.47);
+    box-shadow: 14px 14px 23px -19px rgba(0,0,0,0.47);
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.btn {
+    background-color: #072938;
+    color: #F3F3FF;
+    border: solid 1px #F3F3FF;
+    transition: all .2s ease-in-out;
+}
+.btn:hover {
+    background-color: #FF7900;
+    color: #F3F3FF;
+    width: 75px;
+    font-weight: bold;
+}
+
+.back:hover {
+    color: #FF7900;
+    font-weight: bold;
+}
+
+.btn2 {
+    background-color: #072938;
+    color: #F3F3FF;
+    border: solid 1px #F3F3FF;
+}
+.btn2:hover {
+    background-color: #FF7900;
+    color: #F3F3FF;
+    width: 90px;
+    font-weight: bold;
+}
+
