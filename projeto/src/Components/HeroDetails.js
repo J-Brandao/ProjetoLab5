@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import NavBar from "./Navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import imagem from "../85.jpg";
 import './Rangel.css';
@@ -22,7 +21,6 @@ function HeroDetails({match}) {
 
     return (
         <div>
-            <NavBar/>
             <div className="container row">
                 <div className="col-4 side">
                     <section className={"mt-4"}>
@@ -41,11 +39,11 @@ function HeroDetails({match}) {
                     </section>
                     <section className="col-12">
                         <h3 className="title-font">Aliases</h3>
-                        <h5 >Iron Knight, Hogan Potts, Spare Parts Man, Cobalt Man II, Crimson Dynamo, Ironman</h5>
+                        <h5>Iron Knight, Hogan Potts, Spare Parts Man, Cobalt Man II, Crimson Dynamo, Ironman</h5>
                     </section>
                     <section className="col-12">
                         <h3 className="title-font">Appearance</h3>
-                        <h5 >Iron Knight, Hogan Potts, Spare Parts Man, Cobalt Man II, Crimson Dynamo, Ironman</h5>
+                        <h5>Iron Knight, Hogan Potts, Spare Parts Man, Cobalt Man II, Crimson Dynamo, Ironman</h5>
                     </section>
                 </div>
                 <div className="col-4 mt-4">
