@@ -94,19 +94,19 @@ console.log(item.name);
                 </div>
                 <div className="col-4 mt-3 row text-left">
                     <section className="col-6">
-                        <h3 className="title-font">Nome</h3>
+                        <h3 className="title-font">Name</h3>
                         <h5 style={nomeA}>{check_name(item.biography["full-name"])}</h5>
                     </section>
                     <section className="col-6">
-                        <h3 className="title-font">Universo</h3>
+                        <h3 className="title-font">Universe</h3>
                         <h5 style={nomeA}>{item.biography["publisher"]}</h5>
                     </section>
                     <section className="col-6">
-                        <h3 className="title-font">Informações Gerais</h3>
-                        <h5 style={nomeA}>Género: {check_empty(item.appearance["gender"])}</h5>
-                        <h5 style={nomeA}>Raça: {check_empty(item.appearance["race"])}</h5>
-                        <h5 style={nomeA}>Altura: {check_empty(item.appearance.height[1])}</h5>
-                        <h5 style={nomeA}>Peso: {check_empty(item.appearance.weight[1])}</h5>
+                        <h3 className="title-font">Appearance</h3>
+                        <h5 style={nomeA}>Gender: {check_empty(item.appearance["gender"])}</h5>
+                        <h5 style={nomeA}>Race: {check_empty(item.appearance["race"])}</h5>
+                        <h5 style={nomeA}>Height: {check_empty(item.appearance.height[1])}</h5>
+                        <h5 style={nomeA}>Weight: {check_empty(item.appearance.weight[1])}</h5>
                     </section>
                     <section className="col-6">
                         <h3 className="title-font">Aliases</h3>
@@ -121,7 +121,7 @@ console.log(item.name);
                     </section>
                 </div>
                 <div className="col-5 mt-2">
-                    <h1 className={"text-center title-font"}>Mais sobre o herói</h1>
+                    <h1 className={"text-center title-font"}>More about him</h1>
 
                     <iframe width="400" height="250" src={"https://www.youtube.com/embed/"+YTvid} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullscreen/>
                 </div>
