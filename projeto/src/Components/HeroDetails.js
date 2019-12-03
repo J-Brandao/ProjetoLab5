@@ -5,57 +5,84 @@ import './Rangel.css';
 import {getHerobyID} from "../utils/apiCalls";
 
 function HeroDetails({match}) {
+    useEffect(() => {
+        fetch_hero();
 
-    getHerobyID(123);
-    /*useEffect(() => {
-        pesquisa();
-        console.log(match);
-    }, []);*/
+    }, []);
+    const [item, setItem] = useState({
+        image:{},
+        biography:{},
+        appearance:{
+            height:[],
+            weight:[],
+        },
+    });
 
-    const [item, setItem] = useState({});
+
+    console.log(match.params.id);
+    const fetch_hero = async () => {
+        await getHerobyID(match.params.id).then(res => {
+            setItem(res.data);
+            console.log(res.data);
+        })
+            .catch(error => {
+                console.log(error);
+            })
+    };
+const check_empty=(obj)=>{
+    if(obj!==""&&obj!=="0 kg"){
+        return(obj);
+    }else{
+        return "?";
+    }
+};
+
+
+
+
 
     const nomeA = {
         fontFamily: "Roboto, sans-serif",
     };
 
-    /*const pesquisa = async () => {
-        const pesquisa1 = await fetch(`2443642102517801/123`);
-        const resposta = await pesquisa1.json();
-        setItem(resposta);
-        console.log(resposta);
-    };*/
+
 
     return (
         <div>
             <div className="container row">
                 <div className="col-3 side">
                     <section className={"mt-4"}>
-                        <img src={imagem} className="img-fluid"/>
-                        <h1 className={"text-center title-font"}>IronMan</h1>
+                        <img src={item.image.url} className={"img-fluid"}/>
+                        <h1 className={"text-center title-font"}>{item.name}</h1>
                     </section>
                 </div>
                 <div className="col-4 mt-3 row text-left">
                     <section className="col-6">
                         <h3 className="title-font">Nome</h3>
-                        <h5 style={nomeA}>Toninho Stark</h5>
+                        <h5 style={nomeA}>{check_empty(item.biography["full-name"])}</h5>
                     </section>
                     <section className="col-6">
-                        <h3 className="title-font">Editora</h3>
-                        <h5 style={nomeA}>Marvel</h5>
+                        <h3 className="title-font">Universo</h3>
+                        <h5 style={nomeA}>{item.biography["publisher"]}</h5>
                     </section>
                     <section className="col-6">
-                        <h3 className="title-font">Aparência</h3>
-                        <h5 style={nomeA}>Género: Male</h5>
-                        <h5 style={nomeA}>Raça: Human</h5>
-                        <h5 style={nomeA}>Altura: 198cm</h5>
+                        <h3 className="title-font">Informações Gerais</h3>
+                        <h5 style={nomeA}>Género: {item.appearance["gender"]}</h5>
+                        <h5 style={nomeA}>Raça: {item.appearance["race"]}</h5>
+                        <h5 style={nomeA}>Altura: {check_empty(item.appearance.height[1])}</h5>
+                        <h5 style={nomeA}>Peso: {check_empty(item.appearance.weight[1])}</h5>
                     </section>
                     <section className="col-6">
                         <h3 className="title-font">Outros nomes</h3>
-                        <h5 className={"text-justify"} style={nomeA}>Iron Knight, Hogan Potts, Spare Parts Man, Cobalt Man II, Crimson Dynamo, Ironman</h5>
+                        <h5 className={"text-justify"} style={nomeA}>Iron Knight, Hogan Potts, Spare Parts Man, Cobalt
+                            Man II, Crimson Dynamo, Ironman</h5>
                     </section>
                     <section className="col-12">
                         <h3 className="title-font">Conexões</h3>
-                        <h5 className={"text-justify"} style={nomeA}>Avengers, Illuminati, Stark Resilient; formerly S.H.I.E.L.D., leader of Stark Enterprises, the Pro-Registration Superhero Unit, New Avengers, Mighty Avengers, Hellfire Club, Force Works, Avengers West Coast, United States Department of Defense.</h5>
+                        <h5 className={"text-justify"} style={nomeA}>Avengers, Illuminati, Stark Resilient; formerly
+                            S.H.I.E.L.D., leader of Stark Enterprises, the Pro-Registration Superhero Unit, New
+                            Avengers, Mighty Avengers, Hellfire Club, Force Works, Avengers West Coast, United States
+                            Department of Defense.</h5>
                     </section>
                 </div>
                 <div className="col-5 mt-2">

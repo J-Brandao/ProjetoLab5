@@ -17,7 +17,7 @@
 .navbar {
     background-color: #05052D;
     color: #F3F3FF !important;
-    font-family: "Titles", "Bison Bold";
+    font-family: "Titles", sans-serif;
     font-size: 30px;
 }
 
