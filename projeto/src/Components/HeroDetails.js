@@ -2,13 +2,15 @@ import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import imagem from "../85.jpg";
 import './Rangel.css';
+import {getHerobyID} from "../utils/apiCalls";
 
 function HeroDetails({match}) {
 
-    useEffect(() => {
+    getHerobyID(123);
+    /*useEffect(() => {
         pesquisa();
         console.log(match);
-    }, []);
+    }, []);*/
 
     const [item, setItem] = useState({});
 
@@ -16,12 +18,12 @@ function HeroDetails({match}) {
         fontFamily: "Roboto, sans-serif",
     };
 
-    const pesquisa = async () => {
+    /*const pesquisa = async () => {
         const pesquisa1 = await fetch(`2443642102517801/123`);
         const resposta = await pesquisa1.json();
         setItem(resposta);
         console.log(resposta);
-    };
+    };*/
 
     return (
         <div>
