@@ -30,7 +30,7 @@ function HeroDetails({match}) {
             })
     };
 const check_empty=(obj)=>{
-    if(obj!==""&&obj!=="0 kg"){
+    if(obj!==""&&obj!=="0 kg"&&obj!=="null"&&obj!=="0 cm"){
         return(obj);
     }else{
         return "?";
@@ -67,8 +67,8 @@ const check_empty=(obj)=>{
                     </section>
                     <section className="col-6">
                         <h3 className="title-font">Informações Gerais</h3>
-                        <h5 style={nomeA}>Género: {item.appearance["gender"]}</h5>
-                        <h5 style={nomeA}>Raça: {item.appearance["race"]}</h5>
+                        <h5 style={nomeA}>Género: {check_empty(item.appearance["gender"])}</h5>
+                        <h5 style={nomeA}>Raça: {check_empty(item.appearance["race"])}</h5>
                         <h5 style={nomeA}>Altura: {check_empty(item.appearance.height[1])}</h5>
                         <h5 style={nomeA}>Peso: {check_empty(item.appearance.weight[1])}</h5>
                     </section>
