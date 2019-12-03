@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import btMarvel from '../assets/Img/btmarvel.png';
-import btDC from '../assets/Img/btdc.jpeg';
 
 function Left_side() {
 
