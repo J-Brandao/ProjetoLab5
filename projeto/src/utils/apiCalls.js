@@ -18,6 +18,14 @@ export function getHerobyID(id){
 
 }
 
-export function getYTVids(){
+export function getYTVids(search){
+    console.log(search);
+        return axios({
+            "method":"GET",
+            "url":"https://www.googleapis.com/youtube/v3/search?key=AIzaSyAmH3bv6CM3TKFxN0jk2m9jMgEyYQMaSPA&maxResult=1&part=snippet&q="+search+"%20Super%20Hero%20Origins",
 
+
+        })
 }
+
+
