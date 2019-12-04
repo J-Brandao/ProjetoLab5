@@ -2,78 +2,86 @@ import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import imagem from "../85.jpg";
 import './Rangel.css';
-import {getHerobyID, getYTVids} from "../utils/apiCalls";
+import {getHerobyID, getYTVids, getYTVids_Origins} from "../utils/apiCalls";
 
 function HeroDetails({match}) {
+console.log("ol");
+
+
+
     useEffect(() => {
-        fetch_hero();
+        console.log(match.params.id);
+        let PR = new Promise(
 
+            async (ok,nok) => {
+                await getHerobyID(match.params.id).then(res => {
+                    setItem(res.data);
+                    console.log(res.data);
 
+                    ok(res.data.name);
+
+                })
+                    .catch(error => {
+                        console.log(error);
+                        nok();
+                    })
+
+            });
+        PR.then(fetch_video_origins, ()=>console.log("not OK"));
     }, []);
-useEffect(()=>{
-    fetch_video_origins();
-},[]);
+
 
     const [item, setItem] = useState({
-        image:{},
-        biography:{
-            aliases:[],
+        image: {},
+        biography: {
+            aliases: [],
         },
-        appearance:{
-            height:[],
-            weight:[],
+        appearance: {
+            height: [],
+            weight: [],
         },
     });
-    const [YTvid, setVid]=useState({
-        id:"",
+    const [YTvid, setVid] = useState({
+        id: "",
     });
 
 
-    console.log(match.params.id);
-    const fetch_hero = async () => {
-        await getHerobyID(match.params.id).then(res => {
-            setItem(res.data);
-            console.log(res.data);
 
-        })
-            .catch(error => {
-                console.log(error);
-            })
 
-    };
-    const fetch_video_origins=async ()=>{
-        await getYTVids(item.name).then(res=>{
+
+    const fetch_video_origins = async (name) => {
+        await getYTVids_Origins(name).then(res => {
             setVid(res.data.items[0].id.videoId);
+            console.log(name);
             console.log(res.data.items[0].id.videoId);
-        }).catch(error=>{
+
+        }).catch(error => {
             console.log(error);
         })
     };
 
 
-const check_empty=(obj)=>{
-    if(obj!==""&&obj!=="0 kg"&&obj!=="null"&&obj!=="0 cm"){
-        return(obj);
-    }else{
-        return "?";
-    }
-};
-    const check_array_empty=(obj)=>{
-        if(obj!=="-"){
-            return(obj);
-        }else{
+    const check_empty = (obj) => {
+        if (obj !== "" && obj !== "0 kg" && obj !== "null" && obj !== "0 cm") {
+            return (obj);
+        } else {
             return "?";
         }
     };
-    const check_name=(obj)=>{
-      if(obj!==""){
-          return obj;
-      }  else{
-          return item.name;
-      }
+    const check_array_empty = (obj) => {
+        if (obj !== "-") {
+            return (obj);
+        } else {
+            return "?";
+        }
     };
-
-
+    const check_name = (obj) => {
+        if (obj !== "") {
+            return obj;
+        } else {
+            return item.name;
+        }
+    };
 
 
     const nomeA = {
@@ -81,10 +89,11 @@ const check_empty=(obj)=>{
     };
 
 
-console.log(item.name);
-    console.log(YTvid);
+
     return (
+
         <div>
+
             <div className="container row">
                 <div className="col-3 side">
                     <section className={"mt-4"}>
@@ -110,9 +119,8 @@ console.log(item.name);
                     </section>
                     <section className="col-6">
                         <h3 className="title-font">Aliases</h3>
-                        <h5 className={"text-justify"} style={nomeA}>{item.biography.aliases.map((obj)=>
+                        <h5 className={"text-justify"} style={nomeA}>{item.biography.aliases.map((obj) =>
                             <h5>{check_array_empty(obj)}</h5>
-
                         )}</h5>
                     </section>
                     <section className="col-12">
@@ -123,7 +131,9 @@ console.log(item.name);
                 <div className="col-5 mt-2">
                     <h1 className={"text-center title-font"}>More about him</h1>
 
-                    <iframe width="400" height="250" src={"https://www.youtube.com/embed/"+YTvid} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullscreen/>
+                    <iframe width="400" height="250" src={"https://www.youtube.com/embed/" + YTvid} frameBorder="0"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullscreen/>
                 </div>
             </div>
         </div>

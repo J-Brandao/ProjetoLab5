@@ -18,7 +18,7 @@ export function getHerobyID(id){
 
 }
 
-export function getYTVids(search){
+export function getYTVids_Origins(search){
     console.log(search);
         return axios({
             "method":"GET",
