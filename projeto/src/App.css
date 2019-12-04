@@ -115,3 +115,14 @@
 iframe{
     border:4px solid #ff7f00;
 }
+
+#left-container {
+    height: 100%;
+
+    position: fixed;
+    width: inherit;
+}
+
+#right-container {
+    position: absolute;
+}
