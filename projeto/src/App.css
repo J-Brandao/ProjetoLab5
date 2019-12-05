@@ -17,7 +17,7 @@
 .navbar {
     background-color: #05052D;
     color: #F3F3FF !important;
-    font-family: "Titles", "Bison Bold";
+    font-family: "Titles", sans-serif;
     font-size: 30px;
 }
 
@@ -108,4 +108,21 @@
     font-family: Titles, sans-serif;
     color:white;
     font-size: 6rem;
+}
+.img-details{
+    border:4px solid #ff7f00;
+}
+iframe{
+    border:4px solid #ff7f00;
+}
+
+#left-container {
+    height: 100%;
+
+    position: fixed;
+    width: inherit;
+}
+
+#right-container {
+    position: absolute;
 }
