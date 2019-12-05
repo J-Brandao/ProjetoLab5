@@ -1,103 +1,104 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Form} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import { createUtilizador } from '../actions/utiAction';
+import {Link, withRouter} from 'react-router-dom';
+import { auth } from "../config/firebase";
 
-const cod_s = "0aa0";
+function Registo (props) {
 
-class Registo extends React.Component {
-    state = {
-        nomeAgente: "",
-        codAgente: "",
-        email: "",
-        password: "",
-        codsecreto: ""
-    };
-    handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
-    };
-    handleSubmit = (e) => {
+    const cod_secreto = '0ss0';
+    const [name, setName] = useState('');
+    const [codA, setCodA] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [codS, setCodS] = useState('');
+
+    const handleRegistar = (e) => {
         e.preventDefault();
-        if (cod_s === this.codigo.value) {
-            this.props.createUtilizador(this.state)
-        } else {
-            alert("CÓDIGO ERRADO! ESTAMOS DE OLHO EM TI!");
-            console.log("erro");
+
+        if (codS === cod_secreto) {
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(props.history.push('/entrar'))
+                .catch(err => console.log(err))
+        }else {
+            alert('Código Secreto errado. Estamos de olho em si.')
         }
-        //console.log(this.state);
-        //o this.state é o estado em cima
     };
 
-    render() {
-        return (
-            <div className="container noscroll box">
+    return (
+            <div className="container box">
                 <div className="row justify-content-center">
-                    <div className="col-6 p-5 caixalogin ">
-                        <Form className="text-left" onSubmit={this.handleSubmit}>
+                    <div className="col-lg-5 p-5 caixalogin">
+                        <Form onSubmit={e => e.preventDefault() && false }>
                             <div className="welcome">
                     <span>
-						Dados de Agente
+						Preencha os dados
                     </span>
                             </div>
-                            <div className="row d-flex flex-row justify-content-center">
-                                <div className="col-5">
-                                    <Form.Group className="input-field">
-                                        <Form.Label htmlFor="pnome">Nome de Agente</Form.Label>
-                                        <Form.Control type="text" id="nomeAgente" placeholder="Nome de Agente"
-                                                      onChange={this.handleChange}/>
-                                    </Form.Group>
+                            <Form.Group className="input-field">
+                                <Form.Label htmlFor="name">Nome de Agente</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    id="name"
+                                    value={name}
+                                    placeholder="Nome de Agente"
+                                    onChange={e => setName(e.target.value)}/>
+                            </Form.Group>
 
-                                    <Form.Group className="input-field">
-                                        <Form.Label htmlFor="snome">Código de Agente</Form.Label>
-                                        <Form.Control type="text" id="codAgente" placeholder="Código de Agente"
-                                                      onChange={this.handleChange}/>
-                                    </Form.Group>
-                                    <Form.Group className="input-field">
-                                        <Form.Label htmlFor="email">Email</Form.Label>
-                                        <Form.Control type="email" id="email" placeholder="Email"
-                                                      onChange={this.handleChange}/>
-                                    </Form.Group>
-                                </div>
-                                <div className="col-5">
-                                    <Form.Group className="input-field">
-                                        <Form.Label htmlFor="password">Palavra-Passe</Form.Label>
-                                        <Form.Control type="password" id="password" placeholder="Palavra-Passe"
-                                                      onChange={this.handleChange}/>
-                                    </Form.Group>
-                                    <Form.Group className="input-field">
-                                        <Form.Label htmlFor="password">Código Secreto</Form.Label>
-                                        <Form.Control type="password" id="codsecreto" ref={(c) => {
-                                            this.codigo = c
-                                        }} placeholder="Código Secreto" onChange={this.handleChange}/>
-                                    </Form.Group>
-                                    <div className="text-right">
-                                        <button className="btn" type="submit">
-                                            Entrar
-                                        </button>
-                                    </div>
-                                    <div className="mt-2">
-                                        <Link className="text-decoration-none text-light" to='/'>
-                                            <span className="back">Voltar atrás</span>
-                                        </Link>
-                                    </div>
-                                </div>
+                            <Form.Group className="input-field">
+                                <Form.Label htmlFor="codA">Código de Agente</Form.Label>
+                                <Form.Control
+                                    type="text"
+                                    id="codA"
+                                    value={codA}
+                                    placeholder="Código de Agente"
+                                    onChange={e => setCodA(e.target.value)}/>
+                            </Form.Group>
+                            <Form.Group className="input-field">
+                                <Form.Label htmlFor="email">Email</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    id="email"
+                                    value={email}
+                                    placeholder="Email"
+                                    onChange={e => setEmail(e.target.value)}/>
+                            </Form.Group>
+
+                            <Form.Group className="input-field">
+                                <Form.Label htmlFor="password">Palavra-Passe</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    id="password"
+                                    value={password}
+                                    placeholder="Palavra-Passe"
+                                    onChange={e => setPassword(e.target.value)}/>
+                            </Form.Group>
+                            <Form.Group className="input-field">
+                                <Form.Label htmlFor="codS">Código Secreto</Form.Label>
+                                <Form.Control
+                                    type="password"
+                                    id="codS"
+                                    value={codS}
+                                    placeholder="Código Secreto"
+                                    onChange={e => setCodS(e.target.value)}/>
+                            </Form.Group>
+                            <div className="text-right">
+                                <button className="btn"
+                                        type="submit"
+                                        onClick={handleRegistar}>
+                                    Registar
+                                </button>
+                            </div>
+                            <div>
+                                <Link className="text-decoration-none text-light" to='/entrar'>
+                                    <span className="back">Voltar para a Página Inicial</span>
+                                </Link>
                             </div>
                         </Form>
                     </div>
                 </div>
             </div>
-        )
-    }
+        );
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        createUtilizador: (utilizador) => dispatch(createUtilizador(utilizador))
-    }
-};
 
-
-export default connect(null, mapDispatchToProps)(Registo);
+export default withRouter(Registo);

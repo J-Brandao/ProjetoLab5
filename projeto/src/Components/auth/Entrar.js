@@ -1,67 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {Form} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
-//import logo from '../../assets/Img/Logo.svg';
-//import {connect} from 'react-redux';
-//import {entrou} from "../../store/actions/authAction";
+import { Link, withRouter } from 'react-router-dom';
+import { auth } from '../config/firebase';
 
-class Entrar extends React.Component {
-    state = {
-        email: "",
-        password: ""
-    };
-    handleChange = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
-    };
-    handleSubmit = (e) => {
+
+function Entrar (props){
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleEntrar = (e) => {
         e.preventDefault();
-        console.log(this.state);
-        //this.props.entrou(this.state);
+
+        auth.signInWithEmailAndPassword(email, password)
+        .then( () => {
+            props.history.push('/dashboard')
+        })
+            .catch(err => console.log(err))
     };
-    render() {
 
         return (
-            <div className="container container-fluid noscroll box">
+            <div className="container box">
                 <div className="row justify-content-center">
-                    <div className="col-4 p-5 caixalogin">
-                        {/*<div className="w-50 mb-3">
-                            <img src={logo} alt={logo} className="logo"/>
-                        </div>*/}
-                        <Form className="text-left" id="entrar" onSubmit={this.handleSubmit}>
+                    <div className="col-lg-5 p-5 caixalogin">
+                        <Form id="entrar" onSubmit={e => e.preventDefault() && false}>
                             <div className="welcome">
                     <span>
 						Bem-Vindo Agente
                     </span>
                             </div>
-                            <Form.Group className="input-field">
+                            <Form.Group className="input-field ">
                                 <Form.Label htmlFor="email">Email</Form.Label>
-                                <Form.Control type="email" id="email" placeholder="Email"
-                                              onChange={this.handleChange}/>
+                                <Form.Control
+                                    type="email"
+                                    id="email"
+                                    placeholder="Email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)} />
                             </Form.Group>
                             <Form.Group className="input-field ">
                                 <Form.Label htmlFor="password">Palavra-Passe</Form.Label>
-                                <Form.Control  type="password" id="password" placeholder="Palavra-Passe"
-                                               onChange={this.handleChange}/>
+                                <Form.Control
+                                    type="password"
+                                    id="password"
+                                    placeholder="Palavra-Passe"
+                                    value={password}
+                                    onChange={e => setPassword(e.target.value)}/>
                             </Form.Group>
+
                             <div className="text-right">
-                                <button className="btn" type="submit">
+                                <button className="btn"
+                                        type="submit"
+                                        onClick={handleEntrar}>
                                     Entrar
                                 </button>
                             </div>
+                            <div className="text-danger text-center">
+                            </div>
                             <div>
-                                <Link className="text-decoration-none text-light" to='/'>
-                                    <span className="back">Voltar atrás</span>
+                                <Link className="text-decoration-none text-light" to='/registar'>
+                                    <span className="back">Ir para o Registo</span>
                                 </Link>
                             </div>
                         </Form>
                     </div>
                 </div>
             </div>
-        )
+        );
+
     }
-}
 
-
-export default Entrar;
+    export default Entrar;

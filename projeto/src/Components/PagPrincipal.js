@@ -1,7 +1,7 @@
 import React from 'react';
-//import {Link} from 'react-router-dom';
 import logo from '../assets/Img/Logo.svg';
 import '../PagPrinc.css';
+import { Link } from 'react-router-dom';
 
 class PagPrincipal extends React.Component {
     render() {
@@ -22,6 +22,18 @@ class PagPrincipal extends React.Component {
                                 1500,
                                 quando uma misturou os caracteres de um texto para criar um espécime de livro.</p>
                         </div>
+                        <Link to={'/entrar'}>
+                        <button className="btn"
+                                type="submit">
+                            Entrar
+                        </button>
+                        </Link>
+                        <Link to={'/registar'}>
+                            <button className="btn"
+                                    type="submit">
+                                Registar
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -1,16 +1,22 @@
 import React from 'react';
-import PagPrincipal from "./PagPrincipal";
+import Navbar from './Navbar';
+import { connect } from 'react-redux';
 
 
+function Dashboard () {
 
-class Dashboard extends React.Component{
-    render (){
-        return (
+    return (
+        <div>
+            <Navbar/>
             <div>
-                <PagPrincipal/>
+                HOME PAGE WITH LOGIN
             </div>
+        </div>
+    );
+};
 
-        )
-    }
-}
-export default Dashboard;
+const mapStateToProps = (state)=> ({
+    currentUser: state.auth.currentUser
+});
+
+export default connect(mapStateToProps)(Dashboard);
