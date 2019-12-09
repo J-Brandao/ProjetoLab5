@@ -38,7 +38,7 @@ const mapStateToProps = (state) => ({
     currentUser: state.auth.currentUser
 });
 
-export default connect(mapStateToProps, null)(NavBar);
+export default connect(mapStateToProps)(NavBar);
 
 /*<nav className="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm">
             <Link to='/' className="navbar-brand">

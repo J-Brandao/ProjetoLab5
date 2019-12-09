@@ -15,6 +15,7 @@ function Dashboard () {
     );
 };
 
+// existe essa conexão  do mapStateToProps porque assim passamos o estado da store, ou seja, se o utilizador está logado ou não
 const mapStateToProps = (state)=> ({
     currentUser: state.auth.currentUser
 });
