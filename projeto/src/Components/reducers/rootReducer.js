@@ -1,10 +1,17 @@
 //combinar os dois Reducers num único só
 import authReducer from './authReducer';
-import {combineReducers, applyMiddleware} from 'redux';
+import utiReducer from './utiReducer';
+import {combineReducers} from 'redux';
+import {firestoreReducer} from 'redux-firestore';
+import {firebaseReducer} from 'react-redux-firebase';
+
 
 
 const rootReducer = combineReducers ({
-    auth: authReducer
+    auth: authReducer,
+    utilizador: utiReducer,
+    firestore: firestoreReducer,
+    firebase: firebaseReducer
 });
 
 export default rootReducer;

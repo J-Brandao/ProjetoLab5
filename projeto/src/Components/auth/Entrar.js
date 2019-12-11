@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {Form} from 'react-bootstrap';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { auth } from '../config/firebase';
 
 

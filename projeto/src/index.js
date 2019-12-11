@@ -9,7 +9,7 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux';
 //import thunk from 'redux-thunk';
 import {createFirestoreInstance} from 'redux-firestore';
-import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase'
+import { ReactReduxFirebaseProvider} from 'react-redux-firebase'
 import firebase from './Components/config/firebase';
 import store from './Components/reducers/store';
 //applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})) returna uma store enhancer

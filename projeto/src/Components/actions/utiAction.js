@@ -1,6 +1,5 @@
 import firebase from '../config/firebase';
 
-//getFirebase, getFirestore estes objetos depois vão saber a que projeto estamos conectados
 export const createUtilizador = (utilizador) => {
     return (dispatch, getState) => {
         //make async call to database

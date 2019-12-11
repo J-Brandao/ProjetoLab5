@@ -1,13 +1,13 @@
-import {createStore, applyMiddleware} from 'redux';
-import {logger} from 'redux-logger';
-import {composeWithDevTools} from 'redux-devtools-extension';
+import {createStore, applyMiddleware, compose} from 'redux';
+import {getFirebase} from 'react-redux-firebase';
+import thunk from 'redux-thunk';
 import rootReducer from './rootReducer';
-
-const middlewares = [logger];
 
 const store = createStore(
     rootReducer,
-    composeWithDevTools(applyMiddleware(...middlewares))
+    compose(
+        applyMiddleware(thunk.withExtraArgument({getFirebase})),
+    )
 );
 
 export default store;

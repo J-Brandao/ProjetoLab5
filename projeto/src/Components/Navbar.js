@@ -30,10 +30,10 @@ function NavBar ({currentUser}) {
                     <Nav.Item className="mr-2 pl-2 pr-2">Registar</Nav.Item>
                     </Link>
                     {/*caso o currentUser não for null é mostrado o botão de "Sair"*/}
-                    { currentUser && currentUser ? <Nav.Item className="ml-2"
+                    { currentUser && currentUser ? <Nav.Item className="text-dark mr-2 pl-2 pr-2"
                     onClick={() => auth.signOut()}>
                         Sair
-                    </Nav.Item> : null}
+                    </Nav.Item> : null }
                 </Nav>
             </Navbar>
         </Navbar>

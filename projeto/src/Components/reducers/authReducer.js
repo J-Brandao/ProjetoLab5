@@ -10,7 +10,7 @@ function authReducer (state = initalState, action) {
         case authTypes.SET_CURRENT_USER:
             return {
                 ...state,
-                currentUser: action.payload
+                currentUser: action.currentUser
             };
 
         case authTypes.CLEAR_CURRENT_USER:
@@ -18,7 +18,7 @@ function authReducer (state = initalState, action) {
                 ...state,
                 //se queremos apagar o user quemos que colocar o currentUser a null
                 currentUser: null
-            }
+            };
         default:
             return state
     };

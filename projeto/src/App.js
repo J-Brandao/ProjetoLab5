@@ -9,7 +9,7 @@ import Registo from './Components/auth/Registo';
 import HeroDetails from './Components/HeroDetails';
 import { connect } from 'react-redux';
 import { auth } from './Components/config/firebase';
-import { setCurrentUser, clearCurrentUser } from "./Components/reducers/authActions";
+import { setCurrentUser, clearCurrentUser } from "./Components/actions/authActions";
 import Navbar from './Components/Navbar';
 
 function App({currentUser, setCurrentUser, clearCurrentUser}) {
@@ -23,9 +23,11 @@ function App({currentUser, setCurrentUser, clearCurrentUser}) {
            if (user){
                //se o objeto user existir coloca-lo no CurrentUser
                setCurrentUser(user);
+               console.log(currentUser);
            }else {
                //se não existir user apagar o CurrentUser
                clearCurrentUser();
+               console.log(currentUser);
            }
        });
 

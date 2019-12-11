@@ -1,47 +1,56 @@
 import React, {useState} from 'react';
 import {Form} from 'react-bootstrap';
-import {Link, withRouter} from 'react-router-dom';
-import { auth } from "../config/firebase";
+import {Link} from 'react-router-dom';
+import {auth} from "../config/firebase";
+import {connect} from 'react-redux';
+import {createUtilizador} from '../actions/utiAction';
 
-function Registo (props) {
+const cod_s = "pedro";
 
-    const cod_secreto = '0ss0';
-    const [name, setName] = useState('');
-    const [codA, setCodA] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [codS, setCodS] = useState('');
+class Registo extends React.Component {
+    state = {
+        name: "",
+        codA: "",
+        email: "",
+        password: "",
+        codS: ""
+    };
 
-    const handleRegistar = (e) => {
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    };
+
+    handleSubmit = (e) => {
         e.preventDefault();
-
-        if (codS === cod_secreto) {
-            auth.createUserWithEmailAndPassword(email, password)
-                .then(props.history.push('/entrar'))
-                .catch(err => console.log(err))
-        }else {
-            alert('Código Secreto errado. Estamos de olho em si.')
+        if (cod_s === this.codigo.value) {
+            this.props.createUtilizador(this.state);
+            auth.createUserWithEmailAndPassword(this.state.email, this.state.password);
+            window.location.replace('/entrar')
+        } else {
+            alert("CÓDIGO ERRADO! ESTAMOS DE OLHO EM TI!");
+            console.log("erro");
         }
     };
 
-    return (
+    render() {
+        return (
             <div className="container noscroll box">
                 <div className="row justify-content-center">
                     <div className="col-lg-5 p-5 caixalogin">
-                        <Form onSubmit={e => e.preventDefault() && false }>
+                        <Form onSubmit={this.handleSubmit}>
                             <div className="welcome">
                     <span>
 						Preencha os dados
-                    </span>
-                            </div>
+                    </span></div>
                             <Form.Group className="input-field">
                                 <Form.Label htmlFor="name">Nome de Agente</Form.Label>
                                 <Form.Control
                                     type="text"
                                     id="name"
-                                    value={name}
                                     placeholder="Nome de Agente"
-                                    onChange={e => setName(e.target.value)}/>
+                                    onChange={this.handleChange}/>
                             </Form.Group>
 
                             <Form.Group className="input-field">
@@ -49,18 +58,18 @@ function Registo (props) {
                                 <Form.Control
                                     type="text"
                                     id="codA"
-                                    value={codA}
+
                                     placeholder="Código de Agente"
-                                    onChange={e => setCodA(e.target.value)}/>
+                                    onChange={this.handleChange}/>
                             </Form.Group>
                             <Form.Group className="input-field">
                                 <Form.Label htmlFor="email">Email</Form.Label>
                                 <Form.Control
                                     type="email"
                                     id="email"
-                                    value={email}
+
                                     placeholder="Email"
-                                    onChange={e => setEmail(e.target.value)}/>
+                                    onChange={this.handleChange}/>
                             </Form.Group>
 
                             <Form.Group className="input-field">
@@ -68,25 +77,26 @@ function Registo (props) {
                                 <Form.Control
                                     type="password"
                                     id="password"
-                                    value={password}
+
                                     placeholder="Palavra-Passe"
-                                    onChange={e => setPassword(e.target.value)}/>
+                                    onChange={this.handleChange}/>
                             </Form.Group>
                             <Form.Group className="input-field">
                                 <Form.Label htmlFor="codS">Código Secreto</Form.Label>
                                 <Form.Control
                                     type="password"
                                     id="codS"
-                                    value={codS}
                                     placeholder="Código Secreto"
-                                    onChange={e => setCodS(e.target.value)}/>
+                                    ref={(c) => {
+                                        this.codigo = c
+                                    }}
+                                    onChange={this.handleChange}/>
                             </Form.Group>
                             <div className="text-right">
-                                <button className="btn"
-                                        type="submit"
-                                        onClick={handleRegistar}>
-                                    Registar
-                                </button>
+                                    <button className="btn"
+                                            type="submit">
+                                        Registar
+                                    </button>
                             </div>
                             <div>
                                 <Link className="text-decoration-none text-light" to='/entrar'>
@@ -97,8 +107,14 @@ function Registo (props) {
                     </div>
                 </div>
             </div>
-        );
-}
+    )
+    }
+    }
 
+    const mapDispatchToProps = (dispatch) => {
+        return {
+        createUtilizador: (utilizador) => dispatch(createUtilizador(utilizador))
+    }
+    };
 
-export default withRouter(Registo);
+    export default connect(null, mapDispatchToProps)(Registo);

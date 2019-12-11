@@ -3,6 +3,7 @@
 const initState = {
 
 };
+//componente que afirma que o utilizador foi criado e está na database
 const utiReducer = (state = initState, action) => {
     switch (action.type) {
         case 'ADD_UTI':

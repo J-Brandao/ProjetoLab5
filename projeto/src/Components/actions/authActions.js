@@ -1,4 +1,4 @@
-import authTypes from './authTypes';
+import authTypes from '../reducers/authTypes';
 
 export const setCurrentUser = (user) => {
 
@@ -14,6 +14,5 @@ export const clearCurrentUser = () => {
     //Set the passed in user
     return{
         type: authTypes.CLEAR_CURRENT_USER
-
     }
 };
