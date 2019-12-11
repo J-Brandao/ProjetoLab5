@@ -14,13 +14,13 @@ function Entrar (props){
 
         auth.signInWithEmailAndPassword(email, password)
         .then( () => {
-            props.history.push('/dashboard')
+            props.history.push('/')
         })
             .catch(err => console.log(err))
     };
 
         return (
-            <div className="container box">
+            <div className="container noscroll box">
                 <div className="row justify-content-center">
                     <div className="col-lg-5 p-5 caixalogin">
                         <Form id="entrar" onSubmit={e => e.preventDefault() && false}>

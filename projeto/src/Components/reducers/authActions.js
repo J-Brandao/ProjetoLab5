@@ -9,11 +9,11 @@ export const setCurrentUser = (user) => {
     }
 };
 
-export const clearCurrentUser = (user) => {
+export const clearCurrentUser = () => {
 
     //Set the passed in user
     return{
-        type: authTypes.CLEAR_CURRENT_USER,
+        type: authTypes.CLEAR_CURRENT_USER
 
     }
 };

@@ -1,6 +1,7 @@
 body {
     font-family: 'Roboto';
-    background-color: #F3F3FF;
+    background-image: url("persbw.jpg");
+
     height: 100%;
     width: 100%;
 
@@ -10,17 +11,18 @@ body {
     left: 50%;
 }
 .noscroll {
+    color: black;
     overflow-x: hidden;
 }
 .boxp {
-    color: #F3F3FF;
+    color: black;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
 .box {
-    color: #F3F3FF;
+    color: black;
     position: absolute;
     left: 50%;
     top: 50%;
@@ -28,33 +30,14 @@ body {
 }
 
 .welcome {
-    color: #F3F3FF;
-    text-align: center;
+    color: black;
+    text-align: left;
     text-transform: uppercase;
     font-size: 25px;
     font-weight: bold;
 }
 .caixalogin {
-    background: rgb(5,5,45);
-    background: linear-gradient(-45deg, rgba(5,5,45,1) 0%, rgba(7, 49, 66, 0.93) 100%);
-    background-size: 400% 400%;
-    border-radius: 15px;
-    -webkit-box-shadow: 14px 14px 23px -19px rgba(0,0,0,0.47);
-    -moz-box-shadow: 14px 14px 23px -19px rgba(0,0,0,0.47);
-    box-shadow: 14px 14px 23px -19px rgba(0,0,0,0.47);
-    animation: gradientBG 15s ease infinite;
-}
-
-@keyframes gradientBG {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+    background: white;
 }
 
 .btn {

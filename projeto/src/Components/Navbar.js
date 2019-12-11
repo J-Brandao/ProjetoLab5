@@ -6,12 +6,12 @@ import { auth } from './config/firebase';
 import { connect } from 'react-redux';
 
 function NavBar ({currentUser}) {
-    const nomeA = {
+   /* const nomeA = {
         borderRadius: "10px",
         backgroundColor: "#072938",
         fontFamily: "Roboto, sans-serif",
         textTransform: "uppercase"
-    };
+    };*/
 
     return (
         <Navbar className="navbar" expand="sm">
@@ -22,7 +22,13 @@ function NavBar ({currentUser}) {
             </Navbar.Brand>
             <Navbar id="basic-navbar-nav">
                 <Nav className="justify-content-center">
-                    <Nav.Item className="mr-2 pl-2 pr-2" style={nomeA}>Agente X</Nav.Item>
+                    <Nav.Item className="mr-2 pl-2 pr-2 text-dark">Agente X</Nav.Item>
+                    <Link to='/entrar'>
+                    <Nav.Item className="mr-2 pl-2 pr-2">Entrar</Nav.Item>
+                    </Link>
+                    <Link to='registar'>
+                    <Nav.Item className="mr-2 pl-2 pr-2">Registar</Nav.Item>
+                    </Link>
                     {/*caso o currentUser não for null é mostrado o botão de "Sair"*/}
                     { currentUser && currentUser ? <Nav.Item className="ml-2"
                     onClick={() => auth.signOut()}>
@@ -34,11 +40,12 @@ function NavBar ({currentUser}) {
     );
 };
 
+//vamos buscar o estado para saber se o utilizador fez login ou não
 const mapStateToProps = (state) => ({
     currentUser: state.auth.currentUser
 });
 
-export default connect(mapStateToProps)(NavBar);
+export default connect(mapStateToProps, null)(NavBar);
 
 /*<nav className="navbar navbar-expand-lg navbar-expand-md navbar-expand-sm">
             <Link to='/' className="navbar-brand">

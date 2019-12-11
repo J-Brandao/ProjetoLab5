@@ -25,7 +25,7 @@ function Registo (props) {
     };
 
     return (
-            <div className="container box">
+            <div className="container noscroll box">
                 <div className="row justify-content-center">
                     <div className="col-lg-5 p-5 caixalogin">
                         <Form onSubmit={e => e.preventDefault() && false }>

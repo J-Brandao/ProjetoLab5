@@ -15,7 +15,7 @@
 }*/
 
 .navbar {
-    background-color: #05052D;
+    background-color: white;
     color: #F3F3FF !important;
     font-family: "Titles", sans-serif;
     font-size: 30px;
@@ -23,6 +23,10 @@
 
 .title-font{
     font-family:"Titles", sans-serif;
+}
+
+.noscroll {
+    overflow-x: hidden;
 }
 
 .nav-text{

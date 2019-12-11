@@ -1,18 +1,16 @@
-import React, { useEffect } from 'react'
-//import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import NavBar from "./Components/Navbar";
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import PagPrincipal from './Components/PagPrincipal';
 import Dashboard from './Components/Dashboard';
 import Entrar from './Components/auth/Entrar';
 import Registo from './Components/auth/Registo';
 import HeroDetails from './Components/HeroDetails';
-//import firebase from './Components/config/firebase';
 import { connect } from 'react-redux';
 import { auth } from './Components/config/firebase';
 import { setCurrentUser, clearCurrentUser } from "./Components/reducers/authActions";
+import Navbar from './Components/Navbar';
 
 function App({currentUser, setCurrentUser, clearCurrentUser}) {
     console.log(currentUser);
@@ -23,10 +21,10 @@ function App({currentUser, setCurrentUser, clearCurrentUser}) {
        unsubscribeFromAuth = auth.onAuthStateChanged(user => {
 
            if (user){
-               //
+               //se o objeto user existir coloca-lo no CurrentUser
                setCurrentUser(user);
            }else {
-               //se não existir user apagar o setCurrentUser
+               //se não existir user apagar o CurrentUser
                clearCurrentUser();
            }
        });
@@ -36,6 +34,7 @@ function App({currentUser, setCurrentUser, clearCurrentUser}) {
 
     return (
         <BrowserRouter>
+            <Navbar/>
             <Switch>
                 <Route exact path="/" component={PagPrincipal}/>
                 <Route path="/entrar" component={Entrar}/>
@@ -51,10 +50,10 @@ const mapStateToProps = (state) => ({
     currentUser: state.auth.currentUser
 });
 
-const mapDispatchtoProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
         setCurrentUser: (user) => dispatch(setCurrentUser(user)),
         clearCurrentUser: () => dispatch(clearCurrentUser())
     }
 );
 
-export default connect(mapStateToProps, mapDispatchtoProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
