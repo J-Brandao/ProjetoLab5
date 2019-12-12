@@ -11,6 +11,9 @@ import { connect } from 'react-redux';
 import { auth } from './Components/config/firebase';
 import { setCurrentUser, clearCurrentUser } from "./Components/actions/authActions";
 import Navbar from './Components/Navbar';
+import Main from './Components/Left_side';
+import Marvel from './Components/Marvel';
+import DC from './Components/DC';
 
 function App({currentUser, setCurrentUser, clearCurrentUser}) {
     console.log(currentUser);
@@ -43,6 +46,9 @@ function App({currentUser, setCurrentUser, clearCurrentUser}) {
                 <Route path="/registar" component={Registo}/>
                 <Route path="/dashboard" component={Dashboard}/>
                 <Route path="/hero/:id" component={HeroDetails}/>
+                <Route path="/main" component={Main}/>
+                <Route path="/Marvel" component={Marvel}/>
+                <Route path="/dc" component={DC}/>
             </Switch>
         </BrowserRouter>
     )

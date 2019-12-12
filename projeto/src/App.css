@@ -58,44 +58,57 @@
 
 }
 .Comic_button_DC{
-    width:30vw;
-    height:20vh;
+    width:100vw;
+    height:100%;
 
     padding:0;
-    margin:25px auto;
-    border:7px solid black;
+    border:none;
     filter:brightness(60%);
-    background-image: url("assets/Img/btdc.png");
+    background-image: url("assets/Img/bgDC2.jpg");
+    background-position: center;
     background-repeat: no-repeat;
     background-size:cover;
+    font-family: Titles, sans-serif;
+    color:white;
+    font-size: 6rem;
+    -webkit-transition: font-size .5s ease;
+    -moz-transition: font-size .5s ease;
+    -o-transition: font-size .5s ease;
+    transition: font-size .5s ease;
 
 }
 
 .Comic_button_DC:hover{
-    border:7px solid #ff7f00;
+    /*border:7px solid #ff7f00;*/
     filter:brightness(100%);
+    font-size: 9rem;
 }
 .Comic_button_Marvel{
-    width:30vw;
-    height:20vh;
-    border:7px solid black;
+    width:100vw;
+    height:100%;
+    border:none;
     padding:0;
-    margin:25px auto;
     filter:brightness(60%);
-    background-image: url("assets/Img/btmarvel.png");
+    background-image: url("assets/Img/bgMarvel2.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size:cover;
-
+    font-family: Titles, sans-serif;
+    color:white;
+    font-size: 6rem;
+    -webkit-transition: font-size .5s ease;
+    -moz-transition: font-size .5s ease;
+    -o-transition: font-size .5s ease;
+    transition: font-size .5s ease;
 }
 .Comic_button_Marvel:hover{
-    border:7px solid #ff7f00;
+    /*border:7px solid #ff7f00;*/
     filter:brightness(100%);
+    font-size: 9rem;
 }
+
 .botoes_esquerda{
-    width:30vw;
-    padding-top:10vh;
-    margin:auto auto !important;
+    height: 44vh;
 }
 .container{
     max-width:1500px !important;
@@ -107,11 +120,6 @@
 
 .row{
     margin-top:30px;
-}
-.button_text{
-    font-family: Titles, sans-serif;
-    color:white;
-    font-size: 6rem;
 }
 .img-details{
     border:4px solid #ff7f00;
@@ -129,4 +137,15 @@ iframe{
 
 #right-container {
     position: absolute;
+}
+
+
+.searchbar input[type=text]:focus:not([readonly]) {
+    border: 1px solid #ffb22e;
+    box-shadow: 0 0 0 1px #ffb22e;
+}
+
+.listM{
+    background-color: white;
+    border-radius: 15px;
 }

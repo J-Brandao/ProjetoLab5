@@ -128,7 +128,7 @@ console.log("ol");
                         <h5 className={"text-justify"} style={nomeA}>{item.biography["first-appearance"]}</h5>
                     </section>
                 </div>
-                <div className="col-5 mt-2">
+                <div className="col-5 mt-2 text-center">
                     <h1 className={"text-center title-font"}>More about him</h1>
 
                     <iframe width="400" height="250" src={"https://www.youtube.com/embed/" + YTvid} frameBorder="0"
