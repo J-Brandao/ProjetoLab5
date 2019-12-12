@@ -9,6 +9,7 @@ export const createUtilizador = (utilizador) => {
             createdAt: new Date()
         }).then(() => {
             dispatch({type: 'ADD_UTI', utilizador});
+            console.log(utilizador);
         }).catch((err) => {
             dispatch({type: 'CREATE_UTI_ERROR', err})
         })

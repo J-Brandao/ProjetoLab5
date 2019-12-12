@@ -1,29 +1,37 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {Form} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { auth } from '../config/firebase';
+import {Link} from 'react-router-dom';
+import {auth} from '../config/firebase';
+import { connect } from 'react-redux';
+import { login } from '../actions/authActions';
 
 
-function Entrar (props){
-
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const handleEntrar = (e) => {
-        e.preventDefault();
-
-        auth.signInWithEmailAndPassword(email, password)
-        .then( () => {
-            props.history.push('/')
-        })
-            .catch(err => console.log(err))
+class Entrar extends React.Component {
+    state = {
+        email: "",
+        password: ""
     };
 
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    };
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.login(this.state);
+        console.log(this.state);
+    };
+
+    render() {
+        //destruturação do objeto
+        const {authError} = this.props;
         return (
             <div className="container noscroll box">
                 <div className="row justify-content-center">
                     <div className="col-lg-5 p-5 caixalogin">
-                        <Form id="entrar" onSubmit={e => e.preventDefault() && false}>
+                        <Form id="entrar" onSubmit={this.handleSubmit}>
                             <div className="welcome">
                     <span>
 						Bem-Vindo Agente
@@ -35,8 +43,7 @@ function Entrar (props){
                                     type="email"
                                     id="email"
                                     placeholder="Email"
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)} />
+                                    onChange={this.handleChange}/>
                             </Form.Group>
                             <Form.Group className="input-field ">
                                 <Form.Label htmlFor="password">Palavra-Passe</Form.Label>
@@ -44,16 +51,17 @@ function Entrar (props){
                                     type="password"
                                     id="password"
                                     placeholder="Palavra-Passe"
-                                    value={password}
-                                    onChange={e => setPassword(e.target.value)}/>
+                                    onChange={this.handleChange}/>
                             </Form.Group>
 
                             <div className="text-right">
                                 <button className="btn"
-                                        type="submit"
-                                        onClick={handleEntrar}>
+                                        type="submit">
                                     Entrar
                                 </button>
+                                <div className="text-danger">
+                                    {authError ? <p>{authError}</p> : null}
+                                </div>
                             </div>
                             <div className="text-danger text-center">
                             </div>
@@ -67,7 +75,19 @@ function Entrar (props){
                 </div>
             </div>
         );
-
     }
+}
 
-    export default Entrar;
+const mapStateToProps = (state) => {
+    return {
+        authError: state.auth.authError
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        login: (credentials) => dispatch(login(credentials))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Entrar);

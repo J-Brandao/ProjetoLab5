@@ -2,26 +2,43 @@ import authTypes from './authTypes';
 
 
 const initalState = {
+    authError: null,
     currentUser: null
 };
 
 function authReducer (state = initalState, action) {
     switch(action.type) {
-        case authTypes.SET_CURRENT_USER:
+        case "ERRO_LOGIN":
             return {
                 ...state,
-                currentUser: action.currentUser
+                authError: "login sem sucesso"
             };
-
-        case authTypes.CLEAR_CURRENT_USER:
+        case "LOGIN_SUCESS":
+            console.log('login com sucesso');
             return {
                 ...state,
-                //se queremos apagar o user quemos que colocar o currentUser a null
-                currentUser: null
+                authError: null
+            };
+        case "SUCESSO_A_SAIR":
+            console.log('saiu com sucesso');
+            return {
+                state
+            };
+        case "REGISTO_SUCESSO":
+            console.log('sucesso de registo');
+            return {
+                ...state,
+                authError: null
+            };
+        case "ERRO_SUCESSO":
+            console.log("erro de registo");
+            return {
+                ...state,
+                authError: action.err
             };
         default:
             return state
-    };
-};
+    }
+}
 
 export default authReducer;

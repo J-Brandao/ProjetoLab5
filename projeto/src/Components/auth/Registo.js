@@ -1,16 +1,15 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Form} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
-import {auth} from "../config/firebase";
+import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {createUtilizador} from '../actions/utiAction';
+import { Registar } from '../actions/authActions';
 
 const cod_s = "pedro";
 
 class Registo extends React.Component {
     state = {
-        name: "",
-        codA: "",
+        nomeAgente: "",
+        codAgente: "",
         email: "",
         password: "",
         codS: ""
@@ -25,9 +24,8 @@ class Registo extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         if (cod_s === this.codigo.value) {
-            this.props.createUtilizador(this.state);
-            auth.createUserWithEmailAndPassword(this.state.email, this.state.password);
-            window.location.replace('/entrar')
+            //representa o novo utilizador que está a ser passado no dispatch
+            this.props.Registar(this.state);
         } else {
             alert("CÓDIGO ERRADO! ESTAMOS DE OLHO EM TI!");
             console.log("erro");
@@ -35,6 +33,8 @@ class Registo extends React.Component {
     };
 
     render() {
+        //const { auth, authError } = this.props;
+
         return (
             <div className="container noscroll box">
                 <div className="row justify-content-center">
@@ -48,7 +48,7 @@ class Registo extends React.Component {
                                 <Form.Label htmlFor="name">Nome de Agente</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    id="name"
+                                    id="nomeAgente"
                                     placeholder="Nome de Agente"
                                     onChange={this.handleChange}/>
                             </Form.Group>
@@ -57,7 +57,7 @@ class Registo extends React.Component {
                                 <Form.Label htmlFor="codA">Código de Agente</Form.Label>
                                 <Form.Control
                                     type="text"
-                                    id="codA"
+                                    id="codAgente"
 
                                     placeholder="Código de Agente"
                                     onChange={this.handleChange}/>
@@ -93,10 +93,10 @@ class Registo extends React.Component {
                                     onChange={this.handleChange}/>
                             </Form.Group>
                             <div className="text-right">
-                                    <button className="btn"
-                                            type="submit">
-                                        Registar
-                                    </button>
+                                <button className="btn"
+                                        type="submit">
+                                    Registar
+                                </button>
                             </div>
                             <div>
                                 <Link className="text-decoration-none text-light" to='/entrar'>
@@ -107,14 +107,20 @@ class Registo extends React.Component {
                     </div>
                 </div>
             </div>
-    )
+        )
     }
-    }
+}
 
-    const mapDispatchToProps = (dispatch) => {
-        return {
-        createUtilizador: (utilizador) => dispatch(createUtilizador(utilizador))
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
     }
-    };
+};
 
-    export default connect(null, mapDispatchToProps)(Registo);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        Registar: (newUser) => dispatch(Registar(newUser))
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Registo);
