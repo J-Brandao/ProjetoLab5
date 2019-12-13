@@ -1,18 +1,50 @@
 import authTypes from '../reducers/authTypes';
 
-export const setCurrentUser = (user) => {
+export const login = (credentials) => {
+  return (dispatch, getState, {getFirebase}) => {
+      const firebase = getFirebase();
 
-    //Set the passed in user
-    return{
-        type: authTypes.SET_CURRENT_USER,
-        currentUser: user
+      firebase.auth().signInWithEmailAndPassword(
+          credentials.email,
+          credentials.password
+      ).then(() => {
+          dispatch({type: "LOGIN_SUCESS"})
+      }).catch((err) => {
+          dispatch({type: "ERRO_LOGIN", err})
+      })
+  }
+};
+
+export const sair = () => {
+    return (dispatch, getState, {getFirebase}) => {
+        const firebase = getFirebase();
+
+        firebase.auth().signOut()
+            .then(() => {
+            dispatch({type: "SUCESSO_A_SAIR"})
+        })
     }
 };
 
-export const clearCurrentUser = () => {
-
+export const Registar = (newUser) => {
     //Set the passed in user
-    return{
-        type: authTypes.CLEAR_CURRENT_USER
+    return(dispatch, getState, {getFirebase, getFirestore}) => {
+        const firebase = getFirebase();
+        const firestore = getFirestore();
+
+        firebase.auth().createUserWithEmailAndPassword(
+            newUser.email,
+            newUser.password
+        ).then((resp) => {
+          return firestore.collection('utilizadores').doc(resp.user.uid).set({
+              nomeAgente: newUser.nomeAgente,
+              codAgente: newUser.codAgente
+          })
+        }).then(() => {
+            dispatch({type: "REGISTO_SUCESSO"})
+        }).catch(err => {
+            dispatch({type: "ERRO_REGISTO", err})
+        })
     }
 };
+

@@ -7,35 +7,12 @@ import Dashboard from './Components/Dashboard';
 import Entrar from './Components/auth/Entrar';
 import Registo from './Components/auth/Registo';
 import HeroDetails from './Components/HeroDetails';
-import { connect } from 'react-redux';
-import { auth } from './Components/config/firebase';
-import { setCurrentUser, clearCurrentUser } from "./Components/actions/authActions";
 import Navbar from './Components/Navbar';
 import Main from './Components/Left_side';
 import Marvel from './Components/Marvel';
 import DC from './Components/DC';
 
-function App({currentUser, setCurrentUser, clearCurrentUser}) {
-    console.log(currentUser);
-
-   useEffect(() => {
-       let unsubscribeFromAuth = null;
-
-       unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-
-           if (user){
-               //se o objeto user existir coloca-lo no CurrentUser
-               setCurrentUser(user);
-               console.log(currentUser);
-           }else {
-               //se não existir user apagar o CurrentUser
-               clearCurrentUser();
-               console.log(currentUser);
-           }
-       });
-
-       return () => unsubscribeFromAuth();
-   }, [currentUser, setCurrentUser, clearCurrentUser]);
+function App() {
 
     return (
         <BrowserRouter>
@@ -54,14 +31,4 @@ function App({currentUser, setCurrentUser, clearCurrentUser}) {
     )
 }
 
-const mapStateToProps = (state) => ({
-    currentUser: state.auth.currentUser
-});
-
-const mapDispatchToProps = dispatch => ({
-        setCurrentUser: (user) => dispatch(setCurrentUser(user)),
-        clearCurrentUser: () => dispatch(clearCurrentUser())
-    }
-);
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
