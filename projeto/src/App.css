@@ -71,10 +71,10 @@
     font-family: Titles, sans-serif;
     color:white;
     font-size: 6rem;
-    -webkit-transition: font-size .5s ease;
-    -moz-transition: font-size .5s ease;
-    -o-transition: font-size .5s ease;
-    transition: font-size .5s ease;
+    -webkit-transition: font-size .3s ease;
+    -moz-transition: font-size .3s ease;
+    -o-transition: font-size .3s ease;
+    transition: font-size .3s ease;
 
 }
 
@@ -96,10 +96,10 @@
     font-family: Titles, sans-serif;
     color:white;
     font-size: 6rem;
-    -webkit-transition: font-size .5s ease;
-    -moz-transition: font-size .5s ease;
-    -o-transition: font-size .5s ease;
-    transition: font-size .5s ease;
+    -webkit-transition: font-size .3s ease;
+    -moz-transition: font-size .3s ease;
+    -o-transition: font-size .3s ease;
+    transition: font-size .3s ease;
 }
 .Comic_button_Marvel:hover{
     /*border:7px solid #ff7f00;*/
@@ -148,4 +148,8 @@ iframe{
 .listM{
     background-color: white;
     border-radius: 15px;
+}
+
+.mainDiv{
+    background: white;
 }

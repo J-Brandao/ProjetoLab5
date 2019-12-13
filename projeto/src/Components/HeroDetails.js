@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import imagem from "../85.jpg";
-import './Rangel.css';
+import '../App.css';
 import {getHerobyID, getYTVids, getYTVids_Origins} from "../utils/apiCalls";
 
 function HeroDetails({match}) {
@@ -92,9 +91,9 @@ console.log("ol");
 
     return (
 
-        <div>
+        <div className={"mainDiv m-5"}>
 
-            <div className="container row">
+            <div className="container row info">
                 <div className="col-3 side">
                     <section className={"mt-4"}>
                         <img src={item.image.url} className={"img-fluid img-details"}/>

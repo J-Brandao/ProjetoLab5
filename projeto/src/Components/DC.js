@@ -7,6 +7,13 @@ import Pesquisa from './Pesquisa';
 
 class Dc extends Component {
 
+    constructor(props){
+        super(props);
+        this.state = {
+            pesquisa: ""
+        }
+    }
+
     render() {
         const herois = this.props;
         //console.log(herois);
@@ -16,7 +23,7 @@ class Dc extends Component {
                     <Pesquisa search={this.atualiza}/>
                 </section>
                 <div className={"col-12 mt-4 row text-center pb-4"}>
-                    <HeroList herois={herois.herois.DC_Comics}/>
+                    <HeroList herois={herois.herois.DC_Comics} pesquisa={this.state.pesquisa}/>
                 </div>
             </div>
         );
@@ -24,6 +31,7 @@ class Dc extends Component {
 
     atualiza = (txt) => {
         console.log(txt);
+        this.setState({pesquisa: txt});
     }
 }
 
