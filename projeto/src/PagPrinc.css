@@ -37,6 +37,12 @@ body {
     font-weight: bold;
     border-bottom: solid 3px #FF7900;
 }
+
+.erro {
+    padding: 5px;
+    text-transform: uppercase;
+}
+
 .caixalogin {
     background: white;
 

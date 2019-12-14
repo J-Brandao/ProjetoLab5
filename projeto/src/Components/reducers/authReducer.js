@@ -11,7 +11,7 @@ function authReducer (state = initalState, action) {
         case "ERRO_LOGIN":
             return {
                 ...state,
-                authError: "login sem sucesso"
+                authError: "As credenciais não correspondem à verdade."
             };
         case "LOGIN_SUCESS":
             console.log('login com sucesso');

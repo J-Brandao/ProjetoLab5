@@ -40,7 +40,7 @@ class Registo extends React.Component {
                 <div className="row justify-content-center">
                     <div className="col-lg-5 p-5 caixalogin">
                         <Form onSubmit={this.handleSubmit}>
-                            <div className="welcome">
+                            <div className="welcome mb-2">
                     <span>
 						Preencha os dados
                     </span></div>

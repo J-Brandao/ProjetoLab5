@@ -1,8 +1,8 @@
 import React from 'react';
 import {Form} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import { connect } from 'react-redux';
-import { login } from '../actions/authActions';
+import {connect} from 'react-redux';
+import {login} from '../actions/authActions';
 
 
 class Entrar extends React.Component {
@@ -20,7 +20,22 @@ class Entrar extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.login(this.state);
+        //este console.log mostra o rertornado dos inputs
         console.log(this.state);
+        const {email, password} = this.state;
+        if (!email || !password) {
+            //quando os inputs estão vazios
+            console.log("inputs vazios");
+        }
+
+        //tentativa de navegação após as credenciais estarem corretas
+        /*const {authError} = this.props;
+        if (authError != null) {
+            //nao dá para ver o console.log
+            console.log(authError)
+        } else {
+            //this.props.history.push("/main");
+        }*/
     };
 
     render() {
@@ -31,10 +46,13 @@ class Entrar extends React.Component {
                 <div className="row justify-content-center">
                     <div className="col-lg-5 p-5 caixalogin">
                         <Form id="entrar" onSubmit={this.handleSubmit}>
-                            <div className="welcome">
+                            <div className="welcome mb-2">
                     <span>
 						Bem-Vindo Agente
                     </span>
+                            </div>
+                            <div className="erro text-center text-danger font-weight-bold">
+                                {authError ? <p>{authError}</p> : null}
                             </div>
                             <Form.Group className="input-field ">
                                 <Form.Label htmlFor="email">Email</Form.Label>
@@ -58,11 +76,6 @@ class Entrar extends React.Component {
                                         type="submit">
                                     Entrar
                                 </button>
-                                <div className="text-danger">
-                                    {authError ? <p>{authError}</p> : null}
-                                </div>
-                            </div>
-                            <div className="text-danger text-center">
                             </div>
                             <div>
                                 <Link className="text-decoration-none" to='/registar'>
