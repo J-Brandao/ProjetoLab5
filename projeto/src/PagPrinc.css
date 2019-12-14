@@ -35,6 +35,7 @@ body {
     text-transform: uppercase;
     font-size: 25px;
     font-weight: bold;
+    border-bottom: solid 3px #FF7900;
 }
 .caixalogin {
     background: white;

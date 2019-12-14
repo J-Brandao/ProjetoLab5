@@ -9,7 +9,7 @@ class PagPrincipal extends React.Component {
                 <div className="row justify-content-center">
                     <div className="col-lg-5 p-5 caixalogin">
                         <div className="justify-content-center">
-                            <div className="welcome">
+                            <div className="welcome mb-2">
                                 <h3>F.S.S.U.P</h3>
                             </div>
                             <div>
