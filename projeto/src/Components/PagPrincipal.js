@@ -1,24 +1,30 @@
 import React from 'react';
-import logo from '../assets/Img/Logo.svg';
 import '../PagPrinc.css';
+
 
 class PagPrincipal extends React.Component {
     render() {
         return (
             <div className="mt-4 noscroll container container-fluid box">
-                <div className="row">
-                    <div className="p-5 caixalogin">
+                <div className="row justify-content-center">
+                    <div className="col-lg-5 p-5 caixalogin">
                         <div className="justify-content-center">
                             <div className="welcome">
-                                <h3>Serviços Secretos</h3>
+                                <h3>F.S.S.U.P</h3>
                             </div>
                             <div>
-                                <p className="text-left">O Lorem Ipsum é um texto modelo da indústria tipográfica e de
-                                    impressão.
-                                    O Lorem Ipsum tem vindo a ser o texto padrão usado por estas indústrias desde o ano
-                                    de
-                                    1500,
-                                    quando uma misturou os caracteres de um texto para criar um espécime de livro.</p>
+                                <p className="texto">É uma super organização, muito mais forte e importante do que
+                                    qualquer
+                                    outra (CIA, NSA, FBI, etc). Com uma mega base invisível e flutuante, liderada por
+                                    Jeff Fury,
+                                    cuida dos interesses de dois Universos, Marvel e DC. Ainda trabalha em conjunto com
+                                    os heróis
+                                    (em especial a Liga Vingadora) nas suas missões, além de ser considerada a "última
+                                    defesa
+                                    dos Universos" contra ameças superiores, como os Skrulls, a Hydra, Inumanos, Doutor
+                                    Destino, Joker, Black Adam, Lex Luthor, etc. -
+                                    <span className="text-uppercase font-weight-bold"> Força Secreta Suprema de Universos Paralelos
+                                    </span></p>
                             </div>
                         </div>
                     </div>

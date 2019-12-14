@@ -16,10 +16,23 @@
 
 .navbar {
     background-color: white;
-    color: #F3F3FF !important;
     font-family: "Titles", sans-serif;
-    font-size: 30px;
 }
+
+.navitem {
+    color: black;
+    text-decoration: none;
+    font-size: 30px;
+    -webkit-transition: letter-spacing .3s ease;
+    -moz-transition: letter-spacing .3s ease;
+    -o-transition: letter-spacing .3s ease;
+    transition: letter-spacing .3s ease;
+}
+.navitem:hover {
+    text-decoration: underline #FF7900;
+    letter-spacing: 1.5pt;
+}
+
 
 .title-font{
     font-family:"Titles", sans-serif;
@@ -30,7 +43,6 @@
 }
 
 .nav-text{
-
     vertical-align: center;
     margin-left:3vw;
     margin-top:50px;
@@ -50,7 +62,6 @@
 }
 .div-border-right{
     height:80vh;
-
     margin:0 auto;
     border-right: 2px solid #ff7f00;
 
@@ -138,7 +149,6 @@ iframe{
 #right-container {
     position: absolute;
 }
-
 
 .searchbar input[type=text]:focus:not([readonly]) {
     border: 1px solid #ffb22e;

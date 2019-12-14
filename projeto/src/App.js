@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import PagPrincipal from './Components/PagPrincipal';
-import Dashboard from './Components/Dashboard';
 import Entrar from './Components/auth/Entrar';
 import Registo from './Components/auth/Registo';
 import HeroDetails from './Components/HeroDetails';
@@ -21,7 +20,6 @@ function App() {
                 <Route exact path="/" component={PagPrincipal}/>
                 <Route path="/entrar" component={Entrar}/>
                 <Route path="/registar" component={Registo}/>
-                <Route path="/dashboard" component={Dashboard}/>
                 <Route path="/hero/:id" component={HeroDetails}/>
                 <Route path="/main" component={Main}/>
                 <Route path="/Marvel" component={Marvel}/>

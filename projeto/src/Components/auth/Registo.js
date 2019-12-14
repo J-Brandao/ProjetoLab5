@@ -99,7 +99,7 @@ class Registo extends React.Component {
                                 </button>
                             </div>
                             <div>
-                                <Link className="text-decoration-none text-light" to='/entrar'>
+                                <Link className="text-decoration-none text-light" to='/'>
                                     <span className="back">Voltar para a Página Inicial</span>
                                 </Link>
                             </div>

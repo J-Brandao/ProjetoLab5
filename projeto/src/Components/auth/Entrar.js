@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Form} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
-import {auth} from '../config/firebase';
 import { connect } from 'react-redux';
 import { login } from '../actions/authActions';
 
@@ -66,7 +65,7 @@ class Entrar extends React.Component {
                             <div className="text-danger text-center">
                             </div>
                             <div>
-                                <Link className="text-decoration-none text-light" to='/registar'>
+                                <Link className="text-decoration-none" to='/registar'>
                                     <span className="back">Ir para o Registo</span>
                                 </Link>
                             </div>

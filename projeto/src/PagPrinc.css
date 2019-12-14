@@ -38,21 +38,29 @@ body {
 }
 .caixalogin {
     background: white;
+
 }
 
 .btn {
-    background-color: #072938;
+    background-color: black;
     color: #F3F3FF;
     border: solid 1px #F3F3FF;
-    transition: all .2s ease-in-out;
+    text-transform: uppercase;
+    -webkit-transition: background-color, letter-spacing .3s ease;
+    -moz-transition: background-color, letter-spacing .3s ease;
+    -o-transition: background-color, letter-spacing .3s ease;
+    transition: background-color, letter-spacing .3s ease;
 }
 .btn:hover {
+    color: white;
     background-color: #FF7900;
-    color: #F3F3FF;
-    width: 75px;
     font-weight: bold;
+    letter-spacing: 1pt;
 }
 
+.back {
+    color: black;
+}
 .back:hover {
     color: #FF7900;
     font-weight: bold;
@@ -76,4 +84,9 @@ body {
 
 .menu:hover {
     color: #FF7900;
+}
+
+.texto {
+    line-height: 23pt;
+    text-align: justify;
 }

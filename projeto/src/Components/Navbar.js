@@ -2,7 +2,6 @@ import React from 'react';
 import {Navbar, Nav} from 'react-bootstrap';
 import logo from '../assets/Img/Logo.svg'
 import {Link} from 'react-router-dom';
-import {auth} from './config/firebase';
 import {connect} from 'react-redux';
 import {sair} from './actions/authActions';
 
@@ -19,25 +18,31 @@ function NavBar(props) {
     return (
         <Navbar className="navbar" expand="sm">
             <Navbar.Brand>
-                <Link to='/dashboard'>
+                <Link to='/'>
                     <img src={logo} width={60} height={60}/>
                 </Link>
             </Navbar.Brand>
             <Navbar id="basic-navbar-nav">
                 <Nav className="justify-content-center">
                     { auth.uid ?
-                    <Nav.Item className="mr-2 pl-2 pr-2 text-dark">Agente X</Nav.Item> : null }
+                    <Nav.Item className="navitem mr-2 pl-2 pr-2 text-dark">Agente X</Nav.Item> : null }
                     <Link to='/entrar'>
                         { !auth.uid ?
-                            <Nav.Item className="mr-2 pl-2 pr-2">Entrar</Nav.Item> : null }
+                            <Nav.Item className="navitem mr-2 pl-2 pr-2">Entrar</Nav.Item> : null }
                     </Link>
                     <Link to='/registar'>
                         { !auth.uid ?
-                        <Nav.Item className="mr-2 pl-2 pr-2">Registar</Nav.Item> : null }
+                        <Nav.Item className="navitem mr-2 pl-2 pr-2">Registar</Nav.Item> : null }
+                    </Link>
+                    <Link to='/main'>
+                    { auth.uid ?
+                        <Nav.Item className="navitem mr-2 pl-2 pr-2">
+                            Universos
+                        </Nav.Item> : null }
                     </Link>
                     {/*caso o currentUser não for null é mostrado o botão de "Sair"*/}
                     { auth.uid ?
-                        <Nav.Item className="text-dark mr-2 pl-2 pr-2" onClick={props.sair}>
+                        <Nav.Item className="navitem mr-2 pl-2 pr-2" onClick={props.sair}>
                             Sair
                         </Nav.Item> : null }
                 </Nav>
