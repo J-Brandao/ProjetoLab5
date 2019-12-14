@@ -38,12 +38,14 @@ class Registo extends React.Component {
         return (
             <div className="container noscroll box">
                 <div className="row justify-content-center">
-                    <div className="col-lg-5 p-5 caixalogin">
+                    <div className="col-lg-5 mt-5 p-5 caixalogin">
                         <Form onSubmit={this.handleSubmit}>
                             <div className="welcome mb-2">
                     <span>
 						Preencha os dados
                     </span></div>
+                            <div className="row">
+                                <div className="col-6">
                             <Form.Group className="input-field">
                                 <Form.Label htmlFor="name">Nome de Agente</Form.Label>
                                 <Form.Control
@@ -58,7 +60,6 @@ class Registo extends React.Component {
                                 <Form.Control
                                     type="text"
                                     id="codAgente"
-
                                     placeholder="Código de Agente"
                                     onChange={this.handleChange}/>
                             </Form.Group>
@@ -71,13 +72,13 @@ class Registo extends React.Component {
                                     placeholder="Email"
                                     onChange={this.handleChange}/>
                             </Form.Group>
-
+                                </div>
+                                <div className="col-6">
                             <Form.Group className="input-field">
                                 <Form.Label htmlFor="password">Palavra-Passe</Form.Label>
                                 <Form.Control
                                     type="password"
                                     id="password"
-
                                     placeholder="Palavra-Passe"
                                     onChange={this.handleChange}/>
                             </Form.Group>
@@ -98,9 +99,11 @@ class Registo extends React.Component {
                                     Registar
                                 </button>
                             </div>
-                            <div>
+                                </div>
+                            </div>
+                            <div className="text-left mt-2">
                                 <Link className="text-decoration-none text-light" to='/'>
-                                    <span className="back">Voltar para a Página Inicial</span>
+                                    <span className="back">Voltar para o Início</span>
                                 </Link>
                             </div>
                         </Form>

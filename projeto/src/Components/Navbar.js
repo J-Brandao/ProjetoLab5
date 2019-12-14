@@ -12,8 +12,10 @@ function NavBar(props) {
          fontFamily: "Roboto, sans-serif",
          textTransform: "uppercase"
      };*/
-    const { auth } = props;
+    const { auth, profile } = props;
     //console.log(auth);
+    //profile serve para conseguirmos aceder ao objeto de autenticação que tem as informações do doc do utilizador que
+    //está logado  {profile.codAgente}
     // links são true ou seja, existe login feito
     return (
         <Navbar className="navbar" expand="sm">
@@ -25,7 +27,7 @@ function NavBar(props) {
             <Navbar id="basic-navbar-nav">
                 <Nav className="justify-content-center">
                     { auth.uid ?
-                    <Nav.Item className="navitem mr-2 pl-2 pr-2 text-dark">Agente X</Nav.Item> : null }
+                    <Nav.Item className="navitem mr-2 pl-2 pr-2 text-dark">Agente {profile.codAgente}</Nav.Item> : null }
                     <Link to='/entrar'>
                         { !auth.uid ?
                             <Nav.Item className="navitem mr-2 pl-2 pr-2">Entrar</Nav.Item> : null }
@@ -41,21 +43,24 @@ function NavBar(props) {
                         </Nav.Item> : null }
                     </Link>
                     {/*caso o currentUser não for null é mostrado o botão de "Sair"*/}
+                    <Link to='/'>
                     { auth.uid ?
                         <Nav.Item className="navitem mr-2 pl-2 pr-2" onClick={props.sair}>
                             Sair
                         </Nav.Item> : null }
+                    </Link>
                 </Nav>
             </Navbar>
         </Navbar>
     );
 }
 
-//vamos buscar o estado para saber se o utilizador fez login ou não
+//vamos buscar o estado para saber se o utilizador fez login ou não e para receber os dados do objeto de autenticação
 const mapStateToProps = (state) => {
     console.log(state);
     return {
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 };
 
