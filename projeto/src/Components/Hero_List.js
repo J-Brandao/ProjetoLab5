@@ -7,6 +7,9 @@ const HeroList = ({herois, pesquisa}) => {
         return (
             <div className="section">
                 {herois && herois.map(herois => {
+                    var str= herois.biography.publisher;
+                    var lastIndex = str.lastIndexOf(" ");
+                    str = str.substring(0, lastIndex);
                     //console.log(herois.id);
                     const estilo = {
                         width: "200px",
@@ -23,7 +26,7 @@ const HeroList = ({herois, pesquisa}) => {
                         fontStyle: "Titles"
                     };
                     return (
-                        <Link to={`/hero/${herois.id}`}>
+                        <Link to={`/${str}/${herois.id}`}>
                             <button value={herois.name} key={herois.id} className={"col-4 btn_list"} style={estilo}>
                                 <span  className={"button_text title-font px-3"}>{herois.name}</span>
                             </button>

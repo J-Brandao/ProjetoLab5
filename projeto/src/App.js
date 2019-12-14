@@ -20,10 +20,11 @@ function App() {
                 <Route exact path="/" component={PagPrincipal}/>
                 <Route path="/entrar" component={Entrar}/>
                 <Route path="/registar" component={Registo}/>
-                <Route path="/hero/:id" component={HeroDetails}/>
+                <Route path="/Marvel/:id" component={HeroDetails}/>
+                <Route path="/DC/:id" component={HeroDetails}/>
                 <Route path="/main" component={Main}/>
                 <Route path="/Marvel" component={Marvel}/>
-                <Route path="/dc" component={DC}/>
+                <Route path="/DC" component={DC}/>
             </Switch>
         </BrowserRouter>
     )

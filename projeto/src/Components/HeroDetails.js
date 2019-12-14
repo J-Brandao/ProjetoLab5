@@ -2,14 +2,18 @@ import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import {getHerobyID, getYTVids, getYTVids_Origins} from "../utils/apiCalls";
+import {Link} from 'react-router-dom';
 
 function HeroDetails({match}) {
 console.log("ol");
 
-
+    var str= match.url;
+    var lastIndex = str.lastIndexOf("/");
+    str = str.substring(0, lastIndex);
+    console.log(str);
 
     useEffect(() => {
-        console.log(match.params.id);
+        console.log(match);
         let PR = new Promise(
 
             async (ok,nok) => {
@@ -133,6 +137,7 @@ console.log("ol");
                     <iframe width="400" height="250" src={"https://www.youtube.com/embed/" + YTvid} frameBorder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowFullscreen/>
+                    <Link to={`${str}`}><button>voltar</button></Link>
                 </div>
             </div>
         </div>
