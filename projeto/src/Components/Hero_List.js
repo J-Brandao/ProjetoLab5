@@ -24,8 +24,8 @@ const HeroList = ({herois, pesquisa}) => {
                     };
                     return (
                         <Link to={`/hero/${herois.id}`}>
-                            <button value={herois.name} key={herois.id} className={"col-4"} style={estilo}>
-                                <span>{herois.name}</span>
+                            <button value={herois.name} key={herois.id} className={"col-4 btn_list"} style={estilo}>
+                                <span  className={"button_text title-font px-3"}>{herois.name}</span>
                             </button>
                         </Link>
                     )

@@ -33,7 +33,7 @@ class Right_side extends React.Component {
             </div>
         );
     }
-};
+}
 
 
 const mapStateToProps = (state) => ({
