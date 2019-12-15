@@ -40,6 +40,9 @@ const HeroList = ({herois, pesquisa}) => {
         return (
             <div className="section ml-4 mr-4">
                 {herois && herois.map(herois => {
+                    var str= herois.biography.publisher;
+                    var lastIndex = str.lastIndexOf(" ");
+                    str = str.substring(0, lastIndex);
                     let nomes = herois.name.toLowerCase();
                     if (herois.name.startsWith(pesquisa) || nomes.startsWith(pesquisa)) {
 
@@ -59,7 +62,7 @@ const HeroList = ({herois, pesquisa}) => {
                             fontStyle: "Titles"
                         };
                         return (
-                            <Link to={`/hero/${herois.id}`}>
+                            <Link to={`/${str}/${herois.id}`}>
                                 <button value={herois.name} key={herois.id} className={"btn_list"} style={estilo}>
                                     <span  className={"button_text title-font px-3"}>{herois.name}</span>
                                 </button>
