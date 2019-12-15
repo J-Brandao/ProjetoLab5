@@ -20,6 +20,7 @@ class Entrar extends React.Component {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.login(this.state);
+
         //este console.log mostra o rertornado dos inputs
         console.log(this.state);
         const {email, password} = this.state;
@@ -27,20 +28,13 @@ class Entrar extends React.Component {
             //quando os inputs estão vazios
             console.log("inputs vazios");
         }
-
         //tentativa de navegação após as credenciais estarem corretas
-        /*const {authError} = this.props;
-        if (authError != null) {
-            //nao dá para ver o console.log
-            console.log(authError)
-        } else {
-            //this.props.history.push("/main");
-        }*/
     };
 
     render() {
         //destruturação do objeto
-        const {authError} = this.props;
+        const {authError,} = this.props;
+
         return (
             <div className="container noscroll box">
                 <div className="row justify-content-center">
@@ -92,7 +86,8 @@ class Entrar extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        authError: state.auth.authError
+        authError: state.auth.authError,
+        auth: state.firebase.auth
     }
 };
 

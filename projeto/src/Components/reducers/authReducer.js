@@ -3,7 +3,7 @@ import authTypes from './authTypes';
 
 const initalState = {
     authError: null,
-    currentUser: null
+    currentUser: null,
 };
 
 function authReducer (state = initalState, action) {
@@ -17,7 +17,7 @@ function authReducer (state = initalState, action) {
             console.log('login com sucesso');
             return {
                 ...state,
-                authError: null
+                authError: null,
             };
         case "SUCESSO_A_SAIR":
             console.log('saiu com sucesso');

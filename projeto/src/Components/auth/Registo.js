@@ -26,6 +26,7 @@ class Registo extends React.Component {
         if (cod_s === this.codigo.value) {
             //representa o novo utilizador que está a ser passado no dispatch
             this.props.Registar(this.state);
+            this.props.history.push('/');
         } else {
             alert("CÓDIGO ERRADO! ESTAMOS DE OLHO EM TI!");
             console.log("erro");

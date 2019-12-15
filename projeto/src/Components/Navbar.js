@@ -13,7 +13,7 @@ function NavBar(props) {
          textTransform: "uppercase"
      };*/
     const { auth, profile } = props;
-    //console.log(auth);
+    console.log(auth);
     //profile serve para conseguirmos aceder ao objeto de autenticação que tem as informações do doc do utilizador que
     //está logado  {profile.codAgente}
     // links são true ou seja, existe login feito
