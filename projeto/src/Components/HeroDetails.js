@@ -85,7 +85,24 @@ console.log("ol");
             return item.name;
         }
     };
+    const check_image=(obj)=>{
+        console.log("yo");
+        let img= new Image();
+        img.src=obj;
+        console.log(img.src);
+        if (!img.complete) {
+            return "https://tekrabuilders.com/wp-content/uploads/2018/12/male-placeholder-image.jpeg"
+        }
+        else if (img.height === 0) {
+            return "https://tekrabuilders.com/wp-content/uploads/2018/12/male-placeholder-image.jpeg"
+        }else{
+            return obj;
+        }
 
+
+
+
+    };
 
     const nomeA = {
         fontFamily: "Roboto, sans-serif",
@@ -100,7 +117,7 @@ console.log("ol");
             <div className="container row info">
                 <div className="col-3 side">
                     <section className={"mt-4"}>
-                        <img src={item.image.url} className={"img-fluid img-details"}/>
+                        <img src={check_image(item.image.url)} className={"img-fluid img-details"}/>
                         <h1 className={"text-center title-font"}>{item.name}</h1>
                     </section>
                 </div>
