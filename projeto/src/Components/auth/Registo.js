@@ -12,7 +12,8 @@ class Registo extends React.Component {
         codAgente: "",
         email: "",
         password: "",
-        codS: ""
+        codS: "",
+        erro: ""
     };
 
     handleChange = (e) => {
@@ -23,18 +24,22 @@ class Registo extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
+        const {nomeAgente, codAgente, email, password, codS} = this.state;
+        if (!nomeAgente || !codAgente || !email || !password || !codS) {
+            this.setState({ erro: "Preencha todos os dados para se Registar" });
+            console.log("inputs vazios");
+        }
         if (cod_s === this.codigo.value) {
-            //representa o novo utilizador que está a ser passado no dispatch
             this.props.Registar(this.state);
-            this.props.history.push('/');
+            this.props.history.push('/entrar');
         } else {
-            alert("CÓDIGO ERRADO! ESTAMOS DE OLHO EM TI!");
-            console.log("erro");
+            //representa o novo utilizador que está a ser passado no dispatch
+            this.setState({ erro: "Você errou o Código Secreto. Neste momento é alvo da F.S.S.U.P." });
+
         }
     };
 
     render() {
-        //const { auth, authError } = this.props;
 
         return (
             <div className="container noscroll box">
@@ -42,9 +47,11 @@ class Registo extends React.Component {
                     <div className="col-lg-5 mt-5 p-5 caixalogin">
                         <Form onSubmit={this.handleSubmit}>
                             <div className="welcome mb-2">
-                    <span>
-						Preencha os dados
-                    </span></div>
+                                <span>Preencha os dados</span>
+                            </div>
+                            <div className="erro text-center text-danger font-weight-bold">
+                                {this.state.erro && <p>{this.state.erro}</p>}
+                            </div>
                             <div className="row">
                                 <div className="col-6">
                             <Form.Group className="input-field">

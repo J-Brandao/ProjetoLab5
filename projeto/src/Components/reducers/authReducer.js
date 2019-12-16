@@ -3,7 +3,6 @@ import authTypes from './authTypes';
 
 const initalState = {
     authError: null,
-    currentUser: null,
 };
 
 function authReducer (state = initalState, action) {
@@ -30,11 +29,10 @@ function authReducer (state = initalState, action) {
                 ...state,
                 authError: null
             };
-        case "ERRO_SUCESSO":
+        case "ERRO_REGISTO":
             console.log("erro de registo");
             return {
                 ...state,
-                authError: action.err
             };
         default:
             return state

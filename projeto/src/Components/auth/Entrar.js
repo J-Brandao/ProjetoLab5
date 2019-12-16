@@ -17,6 +17,15 @@ class Entrar extends React.Component {
         })
     };
 
+    componentDidUpdate () {
+        const {auth} = this.props;
+        //console.log("está a ser chamado");
+        if (auth.uid) {
+            //console.log("aconteceu");
+            this.props.history.push('/universos')
+        }
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.login(this.state);
@@ -33,7 +42,7 @@ class Entrar extends React.Component {
 
     render() {
         //destruturação do objeto
-        const {authError,} = this.props;
+        const {authError} = this.props;
 
         return (
             <div className="container noscroll box">
