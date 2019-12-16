@@ -7,7 +7,7 @@ import Entrar from './Components/auth/Entrar';
 import Registo from './Components/auth/Registo';
 import HeroDetails from './Components/HeroDetails';
 import Navbar from './Components/Navbar';
-import Main from './Components/Left_side';
+import Universos from './Components/Universos';
 import Marvel from './Components/Marvel';
 import DC from './Components/DC';
 
@@ -22,7 +22,7 @@ function App() {
                 <Route path="/registar" component={Registo}/>
                 <Route path="/Marvel/:id" component={HeroDetails}/>
                 <Route path="/DC/:id" component={HeroDetails}/>
-                <Route path="/main" component={Main}/>
+                <Route path="/universos" component={Universos}/>
                 <Route path="/Marvel" component={Marvel}/>
                 <Route path="/DC" component={DC}/>
             </Switch>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-function Left_side() {
+function Universos() {
 
         return (
             <div className={"container row no-gutters mainDiv"}>
@@ -16,4 +16,4 @@ function Left_side() {
 }
 
 
-export default Left_side;
+export default Universos;
