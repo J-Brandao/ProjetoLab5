@@ -115,10 +115,13 @@ console.log("ol");
         <div className={"mainDiv m-5"}>
 
             <div className="container row info">
-                <div className="col-3 side">
+                <div className={"col-12 d-flex"}>
+                    <Link to={`${str}`}><button className={"btn mt-2"}>voltar</button></Link>
+                    <h1 className={"text-center title-font col-8 offset-1"}>{item.name}</h1>
+                </div>
+                <div className="col-3 side mb-4">
                     <section className={"mt-4"}>
                         <img src={check_image(item.image.url)} className={"img-fluid img-details"}/>
-                        <h1 className={"text-center title-font"}>{item.name}</h1>
                     </section>
                 </div>
                 <div className="col-4 mt-3 row text-left">
@@ -154,7 +157,6 @@ console.log("ol");
                     <iframe width="400" height="250" src={"https://www.youtube.com/embed/" + YTvid} frameBorder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowFullscreen/>
-                    <Link to={`${str}`}><button>voltar</button></Link>
                 </div>
             </div>
         </div>
