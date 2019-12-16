@@ -1,5 +1,5 @@
 import {createStore, applyMiddleware, compose} from 'redux';
-import { getFirebase } from 'react-redux-firebase';
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 import thunk from 'redux-thunk';
 import rootReducer from './rootReducer';
 import firebase from '../config/firebase';
@@ -9,7 +9,7 @@ const store = createStore(
     rootReducer,
     compose(
         applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
-        reduxFirestore(firebase)
+        reduxFirestore(firebase),
     )
 );
 

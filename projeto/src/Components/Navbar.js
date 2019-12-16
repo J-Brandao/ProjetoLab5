@@ -36,7 +36,7 @@ function NavBar(props) {
                         { !auth.uid ?
                         <Nav.Item className="navitem mr-2 pl-2 pr-2">Registar</Nav.Item> : null }
                     </Link>
-                    <Link to='/main'>
+                    <Link to='/universos'>
                     { auth.uid ?
                         <Nav.Item className="navitem mr-2 pl-2 pr-2">
                             Universos
