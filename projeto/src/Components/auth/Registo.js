@@ -28,18 +28,26 @@ class Registo extends React.Component {
         if (!nomeAgente || !codAgente || !email || !password || !codS) {
             this.setState({ erro: "Preencha todos os dados para se Registar" });
             console.log("inputs vazios");
-        }
-        if (cod_s === this.codigo.value) {
-            this.props.Registar(this.state);
-            this.props.history.push('/entrar');
         } else {
-            //representa o novo utilizador que está a ser passado no dispatch
-            this.setState({ erro: "Você errou o Código Secreto. Neste momento é alvo da F.S.S.U.P." });
-
+            try {
+                //verifica se o campo não está vazio e se o código é igual ao código secreto
+                if (this.codigo.value !== null) {
+                    if (this.codigo.value === cod_s) {
+                        this.props.Registar(this.state);
+                        //this.props.history.push('/');
+                }
+                else {
+                        this.setState({ erro: "O Código Secreto encontra-se errado. Neste momento é um alvo a abater." });
+                    }
+            }
+        } catch (err){
+            console.log(err);
+            }
         }
     };
 
     render() {
+        const {authError} = this.props;
 
         return (
             <div className="container noscroll box">
@@ -50,6 +58,7 @@ class Registo extends React.Component {
                                 <span>Preencha os dados</span>
                             </div>
                             <div className="erro text-center text-danger font-weight-bold">
+                                {authError ? <p>{authError}</p> : null}
                                 {this.state.erro && <p>{this.state.erro}</p>}
                             </div>
                             <div className="row">
@@ -124,6 +133,7 @@ class Registo extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        authError: state.auth.authError,
         auth: state.firebase.auth
     }
 };

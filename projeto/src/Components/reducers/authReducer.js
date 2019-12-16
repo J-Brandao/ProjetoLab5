@@ -33,6 +33,7 @@ function authReducer (state = initalState, action) {
             console.log("erro de registo");
             return {
                 ...state,
+                authError: "O mail já está a ser utilizado."
             };
         default:
             return state
