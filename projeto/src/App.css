@@ -2,6 +2,23 @@
     font-family:Titles;
     src: url("assets/fonts/Bison-Bold(PersonalUse).ttf");
 }
+@font-face{
+    font-family: Normal_text_bold;
+    src:url("assets/fonts/Roboto-Bold.ttf");
+}
+@font-face{
+    font-family: Normal_text_light;
+    src:url("assets/fonts/Roboto-Light.ttf");
+}
+
+.text-font-bold{
+    font-family: "Normal_text_bold", sans-serif;
+
+}
+.text-font-light{
+    font-family: "Normal_text_light", sans-serif;
+
+}
 
 /*.App-header {
   background-color: #282c34;
@@ -175,6 +192,7 @@ iframe{
 }
 .btn_list span{
     width:inherit;
+    padding:0 2px !important;
     font-size: 1.30rem;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -191,7 +209,7 @@ iframe{
 }
 .btn_list:hover span{
 
-    border-radius: 10px;
+
     opacity: 1;
     background-color:#ff7f00;
 

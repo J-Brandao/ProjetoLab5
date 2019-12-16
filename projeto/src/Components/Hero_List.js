@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import{check_image} from "./HeroDetails";
+
 
 
 const HeroList = ({herois, pesquisa}) => {
@@ -8,7 +8,7 @@ const HeroList = ({herois, pesquisa}) => {
     if (pesquisa === "") {
         return (
             <div className="section">
-                {herois && herois.map(herois => {
+                {herois && herois.map((herois, index) => {
                     console.log(herois.image.url);
                     var str= herois.biography.publisher;
                     var lastIndex = str.lastIndexOf(" ");
@@ -29,7 +29,7 @@ const HeroList = ({herois, pesquisa}) => {
                         fontStyle: "Titles"
                     };
                     return (
-                        <Link to={`/${str}/${herois.id}`}>
+                        <Link key={index} to={`/${str}/${herois.id}`}>
                             <button value={herois.name} key={herois.id} className={"col-4 btn_list"} style={estilo}>
                                 <span  className={"button_text title-font px-3"}>{herois.name}</span>
                             </button>
@@ -42,7 +42,7 @@ const HeroList = ({herois, pesquisa}) => {
     else {
         return (
             <div className="section ml-4 mr-4">
-                {herois && herois.map(herois => {
+                {herois && herois.map((herois,index) => {
                     var str= herois.biography.publisher;
                     var lastIndex = str.lastIndexOf(" ");
                     str = str.substring(0, lastIndex);
@@ -65,9 +65,9 @@ const HeroList = ({herois, pesquisa}) => {
                             fontStyle: "Titles"
                         };
                         return (
-                            <Link to={`/${str}/${herois.id}`}>
+                            <Link key={index} to={`/${str}/${herois.id}`}>
                                 <button value={herois.name} key={herois.id} className={"btn_list"} style={estilo}>
-                                    <span  className={"button_text title-font px-3"}>{herois.name}</span>
+                                    <span  className={"button_text title-font "}>{herois.name}</span>
                                 </button>
                             </Link>
                         )

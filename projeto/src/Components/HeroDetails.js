@@ -74,8 +74,6 @@ console.log("ol");
     const fetch_video_origins = async (name) => {
         await getYTVids_Origins(name).then(res => {
             setVid(res.data.items[0].id.videoId);
-            console.log(name);
-            console.log(res.data.items[0].id.videoId);
 
         }).catch(error => {
             console.log(error);
@@ -118,7 +116,7 @@ console.log("ol");
 
             <div className="container row info">
                 <div className={"col-12 d-flex"}>
-                    <Link to={`${str}`}><button className={"btn mt-2"}>voltar</button></Link>
+                    <Link to={`${str}`}><button className={"btn mt-2 text-font-bold"}>voltar</button></Link>
                     <h1 className={"text-center title-font col-8 offset-1"}>{item.name}</h1>
                 </div>
                 <div className="col-3 side mb-4">

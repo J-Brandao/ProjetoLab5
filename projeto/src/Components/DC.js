@@ -21,7 +21,7 @@ class Dc extends Component {
         return (
             <div className={"pt-5 listM m-5"}>
                 <div className={"d-flex"}>
-                    <Link to={'/main'} classname={"col-1 ml-5 btn"}><button className={"btn ml-5"}>Voltar</button></Link>
+                    <Link to={'/universos'} classname={"col-1 ml-5 btn"}><button className={"btn ml-5 text-font-bold"}>Voltar</button></Link>
                     <section className={"col-5 offset-2 searchbar"}>
                         <Pesquisa search={this.atualiza}/>
                     </section>
