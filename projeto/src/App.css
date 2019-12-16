@@ -174,7 +174,11 @@ iframe{
     transition: filter .3s ease;
 }
 .btn_list span{
-    font-size: 1.70rem;
+    width:inherit;
+    font-size: 1.30rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     opacity: 0;
     -webkit-transition: opacity .3s ease;
     -moz-transition: opacity .3s ease;
