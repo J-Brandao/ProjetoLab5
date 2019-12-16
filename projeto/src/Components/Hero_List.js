@@ -1,5 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import{check_image} from "./HeroDetails";
+
 
 const HeroList = ({herois, pesquisa}) => {
     console.log(pesquisa);
@@ -7,6 +9,7 @@ const HeroList = ({herois, pesquisa}) => {
         return (
             <div className="section">
                 {herois && herois.map(herois => {
+                    console.log(herois.image.url);
                     var str= herois.biography.publisher;
                     var lastIndex = str.lastIndexOf(" ");
                     str = str.substring(0, lastIndex);
@@ -17,7 +20,7 @@ const HeroList = ({herois, pesquisa}) => {
                         padding: 0,
                         margin: "10px",
                         border: "none",
-                        backgroundImage: `url(${herois.image.url})`,
+                        backgroundImage: `url(${check_image(herois.image.url)})`,
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",
                         backgroundSize: "cover",
@@ -53,7 +56,7 @@ const HeroList = ({herois, pesquisa}) => {
                             padding: 0,
                             margin: "10px",
                             border: "none",
-                            backgroundImage: `url(${herois.image.url})`,
+                            backgroundImage: `url(${check_image(herois.image.url)})`,
                             backgroundPosition: "center",
                             backgroundRepeat: "no-repeat",
                             backgroundSize: "cover",

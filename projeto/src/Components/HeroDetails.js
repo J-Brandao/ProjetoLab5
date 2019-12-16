@@ -4,6 +4,25 @@ import '../App.css';
 import {getHerobyID, getYTVids, getYTVids_Origins} from "../utils/apiCalls";
 import {Link} from 'react-router-dom';
 
+
+export function  check_image(obj){
+    console.log("yo");
+    let img= new Image();
+    img.src=obj;
+    console.log(img.src);
+    if (!img.complete) {
+        return "https://tekrabuilders.com/wp-content/uploads/2018/12/male-placeholder-image.jpeg"
+    }
+    else if (img.height === 0) {
+        return "https://tekrabuilders.com/wp-content/uploads/2018/12/male-placeholder-image.jpeg"
+    }else{
+        return obj;
+    }
+
+
+
+
+}
 function HeroDetails({match}) {
 console.log("ol");
 
@@ -85,24 +104,7 @@ console.log("ol");
             return item.name;
         }
     };
-    const check_image=(obj)=>{
-        console.log("yo");
-        let img= new Image();
-        img.src=obj;
-        console.log(img.src);
-        if (!img.complete) {
-            return "https://tekrabuilders.com/wp-content/uploads/2018/12/male-placeholder-image.jpeg"
-        }
-        else if (img.height === 0) {
-            return "https://tekrabuilders.com/wp-content/uploads/2018/12/male-placeholder-image.jpeg"
-        }else{
-            return obj;
-        }
 
-
-
-
-    };
 
     const nomeA = {
         fontFamily: "Roboto, sans-serif",
