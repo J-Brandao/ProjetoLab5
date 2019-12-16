@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {compose} from 'redux';
 import HeroList from './Hero_List';
 import Pesquisa from './Pesquisa';
+import {Link} from 'react-router-dom';
 
 class Marvel extends Component {
 
@@ -19,9 +20,12 @@ class Marvel extends Component {
         //console.log(herois);
         return (
             <div className={"pt-5 listM m-5"}>
-                <section className={"col-6 offset-3 searchbar"}>
-                    <Pesquisa search={this.atualiza}/>
-                </section>
+                <div className={"d-flex"}>
+                    <Link to={'/main'} classname={"col-1 ml-5 btn"}><button className={"btn ml-5"}>Voltar</button></Link>
+                    <section className={"col-5 offset-2 searchbar"}>
+                        <Pesquisa search={this.atualiza}/>
+                    </section>
+                </div>
                 <div className={"col-12 mt-4 pb-4 row text-center"}>
                     <HeroList herois={herois.herois.Marvel} pesquisa={this.state.pesquisa}/>
                 </div>
