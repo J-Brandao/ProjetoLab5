@@ -118,42 +118,42 @@ console.log("ol");
             <div className="container row info">
                 <div className={"col-12 d-flex cima"}>
                     <Link to={`${str}`}><button className={"btn mt-2"}>voltar</button></Link>
-                    <h1 className={"text-center title-font col-8 offset-1"}>{item.name}</h1>
+                    <h1 className={"text-center col-8 offset-1 title-font"}>{item.name}</h1>
                 </div>
-                <div className="col-3 side mb-4 text-center">
-                    <section className={"mt-4"}>
+                <div className="col-3 text-center">
+                    <section>
                         <img src={check_image(item.image.url)} className={"img-fluid img-details"}/>
                     </section>
                 </div>
                 <div className="col-4 mt-3 row text-left">
                     <section className="col-6">
-                        <h3 className="title-font">Name</h3>
+                        <h3 style={nomeA}><b>Name</b></h3>
                         <h5 style={nomeA}>{check_name(item.biography["full-name"])}</h5>
                     </section>
                     <section className="col-6">
-                        <h3 className="title-font">Universe</h3>
+                        <h3 style={nomeA}><b>Universe</b></h3>
                         <h5 style={nomeA}>{item.biography["publisher"]}</h5>
                     </section>
                     <section className="col-6">
-                        <h3 className="title-font">Appearance</h3>
+                        <h3 style={nomeA}><b>Appearance</b></h3>
                         <h5 style={nomeA}>Gender: {check_empty(item.appearance["gender"])}</h5>
                         <h5 style={nomeA}>Race: {check_empty(item.appearance["race"])}</h5>
                         <h5 style={nomeA}>Height: {check_empty(item.appearance.height[1])}</h5>
                         <h5 style={nomeA}>Weight: {check_empty(item.appearance.weight[1])}</h5>
                     </section>
                     <section className="col-6">
-                        <h3 className="title-font">Aliases</h3>
+                        <h3 style={nomeA}><b>Aliases</b></h3>
                         <h5 className={"text-justify"} style={nomeA}>{item.biography.aliases.map((obj) =>
                             <h5>{check_array_empty(obj)}</h5>
                         )}</h5>
                     </section>
                     <section className="col-12">
-                        <h3 className="title-font">First Appearance</h3>
+                        <h3 style={nomeA}><b>First Appearance</b></h3>
                         <h5 className={"text-justify"} style={nomeA}>{item.biography["first-appearance"]}</h5>
                     </section>
                 </div>
-                <div className="col-5 mt-2 text-center">
-                    <h1 className={"text-center title-font"}>More about him</h1>
+                <div className="col-4 mt-2 text-center offset-1 rightSide">
+                    <h1 className={"text-center"} style={nomeA}><b>More about him</b></h1>
 
                     <iframe width="400" height="250" src={"https://www.youtube.com/embed/" + YTvid} frameBorder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
