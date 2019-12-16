@@ -134,7 +134,7 @@
     margin-top:30px;
 }
 .img-details{
-    border:4px solid #ff7f00;
+    max-height: 450px;
 }
 iframe{
     border:4px solid #ff7f00;
@@ -158,11 +158,12 @@ iframe{
 
 .listM{
     background-color: white;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .mainDiv{
     background: white;
+    border-radius: 15px;
 }
 .btn_list{
 
@@ -195,4 +196,10 @@ iframe{
     opacity: 1;
     background-color:#ff7f00;
 
+}
+
+.cima{
+    background-color: lightgray;
+    border-bottom: solid black 1px;
+    border-radius: 10px 10px 0px 0px;
 }

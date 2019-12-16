@@ -111,17 +111,16 @@ console.log("ol");
     };
 
 
-
     return (
 
-        <div className={"mainDiv m-5"}>
+        <div className={"mainDiv mt-5 mr-5 ml-5 mb-4"}>
 
             <div className="container row info">
-                <div className={"col-12 d-flex"}>
+                <div className={"col-12 d-flex cima"}>
                     <Link to={`${str}`}><button className={"btn mt-2"}>voltar</button></Link>
                     <h1 className={"text-center title-font col-8 offset-1"}>{item.name}</h1>
                 </div>
-                <div className="col-3 side mb-4">
+                <div className="col-3 side mb-4 text-center">
                     <section className={"mt-4"}>
                         <img src={check_image(item.image.url)} className={"img-fluid img-details"}/>
                     </section>
