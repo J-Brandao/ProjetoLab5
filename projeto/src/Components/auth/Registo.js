@@ -12,7 +12,8 @@ class Registo extends React.Component {
         codAgente: "",
         email: "",
         password: "",
-        codS: ""
+        codS: "",
+        erro: ""
     };
 
     handleChange = (e) => {
@@ -23,18 +24,30 @@ class Registo extends React.Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        if (cod_s === this.codigo.value) {
-            //representa o novo utilizador que está a ser passado no dispatch
-            this.props.Registar(this.state);
-            this.props.history.push('/');
+        const {nomeAgente, codAgente, email, password, codS} = this.state;
+        if (!nomeAgente || !codAgente || !email || !password || !codS) {
+            this.setState({ erro: "Preencha todos os dados para se Registar" });
+            console.log("inputs vazios");
         } else {
-            alert("CÓDIGO ERRADO! ESTAMOS DE OLHO EM TI!");
-            console.log("erro");
+            try {
+                //verifica se o campo não está vazio e se o código é igual ao código secreto
+                if (this.codigo.value !== null) {
+                    if (this.codigo.value === cod_s) {
+                        this.props.Registar(this.state);
+                        //this.props.history.push('/');
+                }
+                else {
+                        this.setState({ erro: "O Código Secreto encontra-se errado. Neste momento é um alvo a abater." });
+                    }
+            }
+        } catch (err){
+            console.log(err);
+            }
         }
     };
 
     render() {
-        //const { auth, authError } = this.props;
+        const {authError} = this.props;
 
         return (
             <div className="container noscroll box">
@@ -42,9 +55,12 @@ class Registo extends React.Component {
                     <div className="col-lg-5 mt-5 p-5 caixalogin">
                         <Form onSubmit={this.handleSubmit}>
                             <div className="welcome mb-2">
-                    <span>
-						Preencha os dados
-                    </span></div>
+                                <span>Preencha os dados</span>
+                            </div>
+                            <div className="erro text-center text-danger font-weight-bold">
+                                {authError ? <p>{authError}</p> : null}
+                                {this.state.erro && <p>{this.state.erro}</p>}
+                            </div>
                             <div className="row">
                                 <div className="col-6">
                             <Form.Group className="input-field">
@@ -117,6 +133,7 @@ class Registo extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        authError: state.auth.authError,
         auth: state.firebase.auth
     }
 };

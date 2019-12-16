@@ -16,7 +16,19 @@ const firebaseConfig = {
     userProfile: 'utilizadores',
     attachAuthIsReady: true
 };
+/*var firebaseConfig = {
+    apiKey: "AIzaSyCpdCgxW9MhmRg42lI9jYn_q4fqpTi2Nuw",
+    authDomain: "ssecretos2.firebaseapp.com",
+    databaseURL: "https://ssecretos2.firebaseio.com",
+    projectId: "ssecretos2",
+    storageBucket: "ssecretos2.appspot.com",
+    messagingSenderId: "233233190646",
+    appId: "1:233233190646:web:b88739b9497dfd796766d7",
+    measurementId: "G-5J84HX5LZT",
+    userProfile: 'utilizadores',
+    attachAuthIsReady: true
 
+}*/
 firebase.initializeApp(firebaseConfig);
 
 firebase.firestore();

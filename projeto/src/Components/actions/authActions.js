@@ -1,4 +1,3 @@
-import authTypes from '../reducers/authTypes';
 
 export const login = (credentials) => {
   return (dispatch, getState, {getFirebase}) => {
@@ -31,20 +30,21 @@ export const Registar = (newUser) => {
     return(dispatch, getState, {getFirebase, getFirestore}) => {
         const firebase = getFirebase();
         const firestore = getFirestore();
+        //const cod = "pedro";
 
-        firebase.auth().createUserWithEmailAndPassword(
-            newUser.email,
-            newUser.password
-        ).then((resp) => {
-          return firestore.collection('utilizadores').doc(resp.user.uid).set({
-              nomeAgente: newUser.nomeAgente,
-              codAgente: newUser.codAgente
-          })
-        }).then(() => {
-            dispatch({type: "REGISTO_SUCESSO"})
-        }).catch(err => {
-            dispatch({type: "ERRO_REGISTO", err})
-        })
+            firebase.auth().createUserWithEmailAndPassword(
+                newUser.email,
+                newUser.password
+            ).then((resp) => {
+                return firestore.collection('utilizadores').doc(resp.user.uid).set({
+                    nomeAgente: newUser.nomeAgente,
+                    codAgente: newUser.codAgente
+                })
+            }).then(() => {
+                dispatch({type: "REGISTO_SUCESSO"})
+            }).catch(err => {
+                dispatch({type: "ERRO_REGISTO", err})
+            })
     }
 };
 
