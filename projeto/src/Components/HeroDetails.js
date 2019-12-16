@@ -120,12 +120,12 @@ console.log("ol");
                     <Link to={`${str}`}><button className={"btn mt-2"}>voltar</button></Link>
                     <h1 className={"text-center col-8 offset-1 title-font"}>{item.name}</h1>
                 </div>
-                <div className="col-3 text-center">
+                <div className="col-md-12 col-lg-3 text-center">
                     <section>
                         <img src={check_image(item.image.url)} className={"img-fluid img-details"}/>
                     </section>
                 </div>
-                <div className="col-4 mt-3 row text-left">
+                <div className="col-md-12 col-lg-4 mt-3 row text-left">
                     <section className="col-6">
                         <h3 style={nomeA}><b>Name</b></h3>
                         <h5 style={nomeA}>{check_name(item.biography["full-name"])}</h5>
@@ -152,7 +152,7 @@ console.log("ol");
                         <h5 className={"text-justify"} style={nomeA}>{item.biography["first-appearance"]}</h5>
                     </section>
                 </div>
-                <div className="col-4 mt-2 text-center offset-1 rightSide">
+                <div className="col-md-12 col-lg-4 mt-2 text-center offset-1 rightSide">
                     <h1 className={"text-center"} style={nomeA}><b>More about him</b></h1>
 
                     <iframe width="400" height="250" src={"https://www.youtube.com/embed/" + YTvid} frameBorder="0"

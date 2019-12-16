@@ -4,7 +4,7 @@ import 'firebase/firebase-firestore';
 import 'firebase/firestore';
 
 
-/*const firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyA8dkPyFBt_J3NfFVe1ayb5DJXmoAcnxWk",
     authDomain: "ssecretos-7995a.firebaseapp.com",
     databaseURL: "https://ssecretos-7995a.firebaseio.com",
@@ -15,8 +15,8 @@ import 'firebase/firestore';
     measurementId: "G-67HJJ63EBP",
     userProfile: 'utilizadores',
     attachAuthIsReady: true
-};*/
-var firebaseConfig = {
+};
+/*var firebaseConfig = {
     apiKey: "AIzaSyCpdCgxW9MhmRg42lI9jYn_q4fqpTi2Nuw",
     authDomain: "ssecretos2.firebaseapp.com",
     databaseURL: "https://ssecretos2.firebaseio.com",
@@ -28,7 +28,7 @@ var firebaseConfig = {
     userProfile: 'utilizadores',
     attachAuthIsReady: true
 
-}
+}*/
 firebase.initializeApp(firebaseConfig);
 
 firebase.firestore();
