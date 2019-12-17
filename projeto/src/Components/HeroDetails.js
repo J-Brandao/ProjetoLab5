@@ -121,12 +121,12 @@ console.log("ol");
 
             <div className="container row info">
                 <div className={"col-12 d-flex cima"}>
-                    <Link to={`${str}`}><button className={"btn mt-2"}>voltar</button></Link>
+                    <span className={"col-1"}><Link to={`${str}`}><button className={"btn mt-2"}>voltar</button></Link></span>
                     <h1 className={"text-center col-8 offset-1 title-font"}>{item.name}</h1>
                 </div>
                 <div className="col-md-12 col-lg-3 text-center">
-                    <section>
-                        <img src={check_image(item.image.url)} className={"img-fluid img-details"}/>
+                    <section className={"text-center"}>
+                        <img src={check_image(item.image.url)} className={"img-fluid img-details col-12"}/>
                     </section>
                 </div>
                 <div className="col-md-12 col-lg-4 mt-3 row text-left">
@@ -158,10 +158,12 @@ console.log("ol");
                 </div>
                 <div className="col-md-12 col-lg-4 mt-2 text-center offset-lg-1 rightSide">
                     <h1 className={"text-center"} style={nomeB}><b>More about him</b></h1>
-
+                    <div className={"col-12"}>
                     <iframe width="400" height="250" src={"https://www.youtube.com/embed/" + YTvid} frameBorder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                             allowFullscreen/>
+                    </div>
+                    <span className={"col-12"}><Link to={`${str}`}><button className={"btn mt-3 mb-2"}>Já avistou este ser?</button></Link></span>
                 </div>
             </div>
         </div>
