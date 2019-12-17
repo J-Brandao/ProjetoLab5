@@ -22,6 +22,15 @@ class Registo extends React.Component {
         })
     };
 
+    componentDidUpdate () {
+        const {auth} = this.props;
+        //console.log("está a ser chamado");
+        if (auth.uid) {
+            //console.log("aconteceu");
+            this.props.history.push('/')
+        }
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
         const {nomeAgente, codAgente, email, password, codS} = this.state;
@@ -34,7 +43,6 @@ class Registo extends React.Component {
                 if (this.codigo.value !== null) {
                     if (this.codigo.value === cod_s) {
                         this.props.Registar(this.state);
-                        //this.props.history.push('/');
                 }
                 else {
                         this.setState({ erro: "O Código Secreto encontra-se errado. Neste momento é um alvo a abater." });
