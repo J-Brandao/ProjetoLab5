@@ -109,6 +109,10 @@ console.log("ol");
     const nomeA = {
         fontFamily: "Roboto, sans-serif",
     };
+    const nomeB = {
+        fontFamily: "Roboto, sans-serif",
+        color: "#ff7f00"
+    };
 
 
     return (
@@ -127,33 +131,33 @@ console.log("ol");
                 </div>
                 <div className="col-md-12 col-lg-4 mt-3 row text-left">
                     <section className="col-6">
-                        <h3 style={nomeA}><b>Name</b></h3>
+                        <h3 style={nomeB}><b>Name</b></h3>
                         <h5 style={nomeA}>{check_name(item.biography["full-name"])}</h5>
                     </section>
                     <section className="col-6">
-                        <h3 style={nomeA}><b>Universe</b></h3>
+                        <h3 style={nomeB}><b>Universe</b></h3>
                         <h5 style={nomeA}>{item.biography["publisher"]}</h5>
                     </section>
                     <section className="col-6">
-                        <h3 style={nomeA}><b>Appearance</b></h3>
+                        <h3 style={nomeB}><b>Appearance</b></h3>
                         <h5 style={nomeA}>Gender: {check_empty(item.appearance["gender"])}</h5>
                         <h5 style={nomeA}>Race: {check_empty(item.appearance["race"])}</h5>
                         <h5 style={nomeA}>Height: {check_empty(item.appearance.height[1])}</h5>
                         <h5 style={nomeA}>Weight: {check_empty(item.appearance.weight[1])}</h5>
                     </section>
                     <section className="col-6">
-                        <h3 style={nomeA}><b>Aliases</b></h3>
+                        <h3 style={nomeB}><b>Aliases</b></h3>
                         <h5 className={"text-justify"} style={nomeA}>{item.biography.aliases.map((obj) =>
                             <h5>{check_array_empty(obj)}</h5>
                         )}</h5>
                     </section>
                     <section className="col-12">
-                        <h3 style={nomeA}><b>First Appearance</b></h3>
+                        <h3 style={nomeB}><b>First Appearance</b></h3>
                         <h5 className={"text-justify"} style={nomeA}>{item.biography["first-appearance"]}</h5>
                     </section>
                 </div>
                 <div className="col-md-12 col-lg-4 mt-2 text-center offset-lg-1 rightSide">
-                    <h1 className={"text-center"} style={nomeA}><b>More about him</b></h1>
+                    <h1 className={"text-center"} style={nomeB}><b>More about him</b></h1>
 
                     <iframe width="400" height="250" src={"https://www.youtube.com/embed/" + YTvid} frameBorder="0"
                             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
