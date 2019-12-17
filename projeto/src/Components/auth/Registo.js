@@ -14,7 +14,10 @@ class Registo extends React.Component {
         password: "",
         codS: "",
         erro: "",
-        persVistos: []
+        persVistos: {
+            nome:"",
+            imagem:"",
+        }
     };
 
     handleChange = (e) => {

@@ -49,9 +49,12 @@ export const Registar = (newUser) => {
     }
 };
 
-export const encontrado = (personagens, uid) => {
+export const encontrado = (personagens, uid, prevprofile) => {
     console.log(personagens);
     console.log(uid);
+    console.log(prevprofile);
+    prevprofile.push(personagens);
+
     return (dispatch, getState, {getFirebase, getFirestore}) => {
         console.log("estou aqui");
         console.log(getState);
@@ -59,10 +62,11 @@ export const encontrado = (personagens, uid) => {
         const firebase= getFirebase;
 
 
+
         firestore.collection("utilizadores").where("uid", "==", uid).get().then(() => {
             return firestore.collection("utilizadores").doc(uid).update({
 
-                persVistos: [personagens.nome, personagens.imagem]
+                persVistos: prevprofile,
 
             });
         })

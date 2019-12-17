@@ -72,7 +72,7 @@ function HeroDetails(props) {
     const handleGuardar = (uid) => {
         console.log("clicou");
         console.log(uid);
-        props.encontrado({nome: item.name, imagem: item.image.url}, uid);
+        props.encontrado({nome: item.name, imagem: item.image.url, id:item.id}, uid, persVistos);
 
 
     };
@@ -120,7 +120,7 @@ function HeroDetails(props) {
         color: "#ff7f00"
     };
 
-const {auth}=props;
+const {auth, persVistos}=props;
 
     return (
 
@@ -180,13 +180,14 @@ const {auth}=props;
 const mapStateToProps = (state) => {
     return {
         auth: state.firebase.auth,
+        persVistos: state.firebase.profile.persVistos
 
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        encontrado: (personagens, uid) => dispatch(encontrado(personagens, uid))
+        encontrado: (personagens, uid, prevprofile) => dispatch(encontrado(personagens, uid, prevprofile))
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(HeroDetails);

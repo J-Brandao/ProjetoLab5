@@ -5,6 +5,10 @@ import {connect} from 'react-redux';
  function Perfil(props)
 {
 const {profile}=props;
+if(profile.persVistos!==undefined) {
+
+
+    console.log(profile.persVistos.nome);
 
     const estilo = {
         width: "200px",
@@ -20,10 +24,13 @@ const {profile}=props;
         color: "white",
         fontStyle: "Titles"
     };
+
     return (
         <div className={"mainDiv mt-5 mr-5 ml-5 mb-4"}>
             <div className={"col-12 d-flex cima"}>
-                <Link to={`/universos`}><button className={"btn mt-2"}>voltar</button></Link>
+                <Link to={`/universos`}>
+                    <button className={"btn mt-2"}>voltar</button>
+                </Link>
                 <h1 className={"text-center col-8 offset-1 title-font"}>{profile.nomeAgente}-{profile.codAgente}</h1>
             </div>
             <h2 className={"text-center col-8  title-font mx-auto"}>Heróis que já encontrei</h2>
@@ -31,13 +38,16 @@ const {profile}=props;
 
                 /*Map do array*/
 
-                    <button className={"col-4 btn_list"} style={estilo}>
-                        <span  className={"button_text title-font px-3"}>Nome</span>
-                    </button>
+                <button className={"col-4 btn_list"} style={estilo}>
+                    <span className={"button_text title-font px-3"}>{profile.persVistos.nome}</span>
+                </button>
 
             </div>
         </div>
     );
+}else{
+    return <div>hgtr</div>
+}
 }
 
 const mapStateToProps = (state)=>{

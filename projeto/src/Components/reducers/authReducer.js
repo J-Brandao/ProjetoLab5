@@ -2,10 +2,7 @@ import authTypes from './authTypes';
 
 const initalState = {
     authError: null,
-    encontrados: [{
-        imagem: "",
-        nome: ""
-}]
+    encontrados: []
 }
 ;
 
