@@ -2,10 +2,15 @@ import authTypes from './authTypes';
 
 const initalState = {
     authError: null,
-};
+    encontrados: [{
+        imagem: "",
+        nome: ""
+}]
+}
+;
 
-function authReducer (state = initalState, action) {
-    switch(action.type) {
+function authReducer(state = initalState, action) {
+    switch (action.type) {
         case "ERRO_LOGIN":
             return {
                 ...state,
@@ -34,6 +39,17 @@ function authReducer (state = initalState, action) {
                 ...state,
                 authError: "O mail já está a ser utilizado."
             };
+        case "ADD_ENCONTRADO":
+            console.log("Adicionado");
+            return {
+                ...state,
+            };
+        case "ERRO_ENCONTRADO":
+            console.log("erro");
+            return {
+                ...state,
+            };
+
         default:
             return state
     }

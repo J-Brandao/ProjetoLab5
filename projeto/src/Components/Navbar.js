@@ -27,7 +27,7 @@ function NavBar(props) {
             <Navbar id="basic-navbar-nav">
                 <Nav className="justify-content-center">
                     { auth.uid ?
-                    <Nav.Item className="navitem mr-2 pl-2 pr-2 text-dark">Agente {profile.codAgente}</Nav.Item> : null }
+                    <Link to='/perfil' className="navitem mr-2 pl-2 pr-2 text-dark">Agente {profile.codAgente}</Link> : null }
                     <Link to='/entrar'>
                         { !auth.uid ?
                             <Nav.Item className="navitem mr-2 pl-2 pr-2">Entrar</Nav.Item> : null }

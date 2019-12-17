@@ -10,6 +10,7 @@ import Navbar from './Components/Navbar';
 import Universos from './Components/Universos';
 import Marvel from './Components/Marvel';
 import DC from './Components/DC';
+import Perfil from './Components/Perfil';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
                 <Route exact path="/" component={PagPrincipal}/>
                 <Route path="/entrar" component={Entrar}/>
                 <Route path="/registar" component={Registo}/>
+                <Route path="/perfil" component={Perfil}/>
                 <Route path="/Marvel/:id" component={HeroDetails}/>
                 <Route path="/DC/:id" component={HeroDetails}/>
                 <Route path="/universos" component={Universos}/>

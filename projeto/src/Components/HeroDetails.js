@@ -1,42 +1,43 @@
 import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
-import {getHerobyID, getYTVids, getYTVids_Origins} from "../utils/apiCalls";
+import {getHerobyID, getYTVids_Origins} from "../utils/apiCalls";
 import {Link} from 'react-router-dom';
 
+import {connect} from 'react-redux';
+import {encontrado} from "./actions/authActions";
 
-export function  check_image(obj){
+
+export function check_image(obj) {
     console.log("yo");
-    let img= new Image();
-    img.src=obj;
+    let img = new Image();
+    img.src = obj;
     console.log(img.src);
     if (!img.complete) {
         return "https://tekrabuilders.com/wp-content/uploads/2018/12/male-placeholder-image.jpeg"
     }
     else if (img.height === 0) {
         return "https://tekrabuilders.com/wp-content/uploads/2018/12/male-placeholder-image.jpeg"
-    }else{
+    } else {
         return obj;
     }
 
 
-
-
 }
-function HeroDetails({match}) {
-console.log("ol");
 
-    var str= match.url;
+function HeroDetails(props) {
+    console.log("ol");
+    console.log(props);
+    var str = props.match.url;
     var lastIndex = str.lastIndexOf("/");
     str = str.substring(0, lastIndex);
     console.log(str);
 
     useEffect(() => {
-        console.log(match);
+        console.log(props.match);
         let PR = new Promise(
-
-            async (ok,nok) => {
-                await getHerobyID(match.params.id).then(res => {
+            async (ok, nok) => {
+                await getHerobyID(props.match.params.id).then(res => {
                     setItem(res.data);
                     console.log(res.data);
 
@@ -49,7 +50,7 @@ console.log("ol");
                     })
 
             });
-        PR.then(fetch_video_origins, ()=>console.log("not OK"));
+        PR.then(fetch_video_origins, () => console.log("not OK"));
     }, []);
 
 
@@ -68,8 +69,13 @@ console.log("ol");
     });
 
 
+    const handleGuardar = (uid) => {
+        console.log("clicou");
+        console.log(uid);
+        props.encontrado({nome: item.name, imagem: item.image.url}, uid);
 
 
+    };
 
     const fetch_video_origins = async (name) => {
         await getYTVids_Origins(name).then(res => {
@@ -114,6 +120,7 @@ console.log("ol");
         color: "#ff7f00"
     };
 
+const {auth}=props;
 
     return (
 
@@ -159,15 +166,28 @@ console.log("ol");
                 <div className="col-md-12 col-lg-4 mt-2 text-center offset-lg-1 rightSide">
                     <h1 className={"text-center"} style={nomeB}><b>More about him</b></h1>
                     <div className={"col-12"}>
-                    <iframe width="400" height="250" src={"https://www.youtube.com/embed/" + YTvid} frameBorder="0"
-                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullscreen/>
+                        <iframe width="400" height="250" src={"https://www.youtube.com/embed/" + YTvid} frameBorder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullscreen/>
                     </div>
-                    <span className={"col-12"}><Link to={`${str}`}><button className={"btn mt-3 mb-2"}>Já avistou este ser?</button></Link></span>
+                    <span className={"col-12"}><button className={"btn mt-3 mb-2"} onClick={()=>{handleGuardar(auth.uid)}}>Já avistou este ser?</button></span>
                 </div>
             </div>
         </div>
     )
 }
 
-export default HeroDetails;
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth,
+
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        encontrado: (personagens, uid) => dispatch(encontrado(personagens, uid))
+    }
+};
+export default connect(mapStateToProps, mapDispatchToProps)(HeroDetails);
+
