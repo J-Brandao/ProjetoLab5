@@ -21,9 +21,10 @@ function App() {
                 <Route exact path="/" component={PagPrincipal}/>
                 <Route path="/entrar" component={Entrar}/>
                 <Route path="/registar" component={Registo}/>
-                <Route path="/perfil" component={Perfil}/>
+                <Route exact path="/perfil" component={Perfil}/>
                 <Route path="/Marvel/:id" component={HeroDetails}/>
                 <Route path="/DC/:id" component={HeroDetails}/>
+                <Route path="/perfil/:id" component={HeroDetails}/>
                 <Route path="/universos" component={Universos}/>
                 <Route path="/Marvel" component={Marvel}/>
                 <Route path="/DC" component={DC}/>

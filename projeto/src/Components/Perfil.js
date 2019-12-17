@@ -10,20 +10,7 @@ if(profile.persVistos!==undefined) {
 
     console.log(profile.persVistos.nome);
 
-    const estilo = {
-        width: "200px",
-        height: "200px",
-        padding: 0,
-        margin: "10px",
-        border: "2px solid red",
 
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        borderRadius: "5px",
-        color: "white",
-        fontStyle: "Titles"
-    };
 
     return (
         <div className={"mainDiv mt-5 mr-5 ml-5 mb-4"}>
@@ -36,11 +23,31 @@ if(profile.persVistos!==undefined) {
             <h2 className={"text-center col-8  title-font mx-auto"}>Heróis que já encontrei</h2>
             <div className="section">
 
-                /*Map do array*/
+                {profile.persVistos.map((item, index)=>{
+                    const estilo = {
+                        width: "200px",
+                        height: "200px",
+                        padding: 0,
+                        margin: "10px",
+                        border: "2px solid red",
+                        backgroundImage:`url(${item.imagem})`,
+                        backgroundPosition: "center",
+                        backgroundRepeat: "no-repeat",
+                        backgroundSize: "cover",
+                        borderRadius: "5px",
+                        color: "white",
+                        fontStyle: "Titles"
+                    };
+                    return(
+                        <Link key={index} to={`/perfil/${item.id}`}>
+                        <button className={"col-4 btn_list"} style={estilo}>
+                            <span className={"button_text title-font px-3"}>{item.nome}</span>
+                        </button>
+                        </Link>
+                    )
+                })}
 
-                <button className={"col-4 btn_list"} style={estilo}>
-                    <span className={"button_text title-font px-3"}>{profile.persVistos.nome}</span>
-                </button>
+
 
             </div>
         </div>
