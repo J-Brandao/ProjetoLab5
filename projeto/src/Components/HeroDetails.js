@@ -68,11 +68,18 @@ function HeroDetails(props) {
         id: "",
     });
 
+    const [visitado, setVisitado] = useState(true);
+
 
     const handleGuardar = (uid) => {
         console.log("clicou");
-        console.log(uid);
-        props.encontrado({nome: item.name, imagem: item.image.url, id:item.id}, uid, persVistos);
+        setVisitado(false);
+        props.encontrado({
+            nome: item.name,
+            imagem: item.image.url,
+            id: item.id,
+            publisher: item.biography.publisher
+        }, uid, persVistos);
 
 
     };
@@ -111,7 +118,18 @@ function HeroDetails(props) {
         }
     };
 
+    const check_added = () => {
+        if (persVistos !== undefined) {
+            persVistos.map((inst) => {
+                if (inst.id === item.id) {
+                    setVisitado(false);
+                } else {
 
+                }
+            })
+
+        }
+    };
     const nomeA = {
         fontFamily: "Roboto, sans-serif",
     };
@@ -120,7 +138,7 @@ function HeroDetails(props) {
         color: "#ff7f00"
     };
 
-const {auth, persVistos}=props;
+    const {auth, persVistos} = props;
 
     return (
 
@@ -170,7 +188,10 @@ const {auth, persVistos}=props;
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullscreen/>
                     </div>
-                    <span className={"col-12"}><button className={"btn mt-3 mb-2"} onClick={()=>{handleGuardar(auth.uid)}}>Já avistou este ser?</button></span>
+
+                    {visitado === true ? <span className={"col-12"}><button className={"btn mt-3 mb-2"} onClick={() => {
+                        handleGuardar(auth.uid)
+                    }}>Já avistou este ser?</button></span> : null}
                 </div>
             </div>
         </div>
