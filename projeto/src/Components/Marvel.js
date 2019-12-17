@@ -17,6 +17,9 @@ class Marvel extends Component {
 
     render() {
         const herois = this.props;
+
+        const {auth} = this.props;
+        if (!auth.uid) {this.props.history.push('/')}
         //console.log(herois);
         return (
             <div className={"pt-5 listM m-5"}>
@@ -42,6 +45,7 @@ class Marvel extends Component {
 
 const mapStateToProps = (state) => ({
     herois: state.firestore.ordered,
+    auth: state.firebase.auth
 });
 
 
