@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
 import {getHerobyID, getYTVids_Origins} from "../utils/apiCalls";
 import {Link} from 'react-router-dom';
-
+import placeholder from '../assets/Img/question_mark.png';
 import {connect} from 'react-redux';
 import {encontrado} from "./actions/authActions";
 
@@ -14,10 +14,10 @@ export function check_image(obj) {
     img.src = obj;
     console.log(img.src);
     if (!img.complete) {
-        return "https://tekrabuilders.com/wp-content/uploads/2018/12/male-placeholder-image.jpeg"
+        return placeholder
     }
     else if (img.height === 0) {
-        return "https://tekrabuilders.com/wp-content/uploads/2018/12/male-placeholder-image.jpeg"
+        return placeholder
     } else {
         return obj;
     }
@@ -50,7 +50,7 @@ function HeroDetails(props) {
                     })
 
             });
-        PR.then(fetch_video_origins, () => console.log("not OK"));
+        PR.then(fetch_video_origins , () => console.log("not OK"));
     }, []);
 
 
@@ -68,17 +68,18 @@ function HeroDetails(props) {
         id: "",
     });
 
-    const [visitado, setVisitado] = useState(true);
+    const [visitado, setVisitado] = useState("");
 
 
     const handleGuardar = (uid) => {
         console.log("clicou");
-        setVisitado(false);
+
+
         props.encontrado({
             nome: item.name,
             imagem: item.image.url,
             id: item.id,
-            publisher: item.biography.publisher
+
         }, uid, persVistos);
 
 
@@ -118,18 +119,22 @@ function HeroDetails(props) {
         }
     };
 
-    const check_added = () => {
+    /*const check_added = () => {
         if (persVistos !== undefined) {
+            console.log(persVistos);
             persVistos.map((inst) => {
                 if (inst.id === item.id) {
+                    console.log(inst.id);
                     setVisitado(false);
                 } else {
-
+                    setVisitado(true);
                 }
             })
 
+        }else{
+            setVisitado(true);
         }
-    };
+    };*/
     const nomeA = {
         fontFamily: "Roboto, sans-serif",
     };
@@ -156,42 +161,42 @@ function HeroDetails(props) {
                 </div>
                 <div className="col-md-12 col-lg-4 mt-3 row text-left">
                     <section className="col-6">
-                        <h3 style={nomeB}><b>Name</b></h3>
+                        <h3 style={nomeB}><b>Nome</b></h3>
                         <h5 style={nomeA}>{check_name(item.biography["full-name"])}</h5>
                     </section>
                     <section className="col-6">
-                        <h3 style={nomeB}><b>Universe</b></h3>
+                        <h3 style={nomeB}><b>Universo</b></h3>
                         <h5 style={nomeA}>{item.biography["publisher"]}</h5>
                     </section>
                     <section className="col-6">
-                        <h3 style={nomeB}><b>Appearance</b></h3>
-                        <h5 style={nomeA}>Gender: {check_empty(item.appearance["gender"])}</h5>
-                        <h5 style={nomeA}>Race: {check_empty(item.appearance["race"])}</h5>
-                        <h5 style={nomeA}>Height: {check_empty(item.appearance.height[1])}</h5>
-                        <h5 style={nomeA}>Weight: {check_empty(item.appearance.weight[1])}</h5>
+                        <h3 style={nomeB}><b>Aparência</b></h3>
+                        <h5 style={nomeA}>Género: {check_empty(item.appearance["gender"])}</h5>
+                        <h5 style={nomeA}>Raça: {check_empty(item.appearance["race"])}</h5>
+                        <h5 style={nomeA}>Altura: {check_empty(item.appearance.height[1])}</h5>
+                        <h5 style={nomeA}>peso: {check_empty(item.appearance.weight[1])}</h5>
                     </section>
                     <section className="col-6">
-                        <h3 style={nomeB}><b>Aliases</b></h3>
+                        <h3 style={nomeB}><b>Outros Nomes</b></h3>
                         <h5 className={"text-justify"} style={nomeA}>{item.biography.aliases.map((obj) =>
-                            <h5>{check_array_empty(obj)}</h5>
+                            check_array_empty(obj)
                         )}</h5>
                     </section>
                     <section className="col-12">
-                        <h3 style={nomeB}><b>First Appearance</b></h3>
+                        <h3 style={nomeB}><b>Primeira aparência</b></h3>
                         <h5 className={"text-justify"} style={nomeA}>{item.biography["first-appearance"]}</h5>
                     </section>
                 </div>
                 <div className="col-md-12 col-lg-4 mt-2 text-center offset-lg-1 rightSide">
-                    <h1 className={"text-center"} style={nomeB}><b>More about him</b></h1>
+                    <h1 className={"text-center"} style={nomeB}><b>Mais sobre</b></h1>
                     <div className={"col-12"}>
                         <iframe width="400" height="250" src={"https://www.youtube.com/embed/" + YTvid} frameBorder="0"
                                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                                 allowFullscreen/>
                     </div>
 
-                    {visitado === true ? <span className={"col-12"}><button className={"btn mt-3 mb-2"} onClick={() => {
+                    <span className={"col-12"}><button className={"btn mt-3 mb-2"} onClick={() => {
                         handleGuardar(auth.uid)
-                    }}>Já avistou este ser?</button></span> : null}
+                    }}>Já avistou este ser?</button></span>
                 </div>
             </div>
         </div>
@@ -201,8 +206,8 @@ function HeroDetails(props) {
 const mapStateToProps = (state) => {
     return {
         auth: state.firebase.auth,
-        persVistos: state.firebase.profile.persVistos
-
+        persVistos: state.firebase.profile.persVistos,
+        profile:state.firebase.profile
     }
 };
 
