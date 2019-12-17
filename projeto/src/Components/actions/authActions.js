@@ -38,7 +38,8 @@ export const Registar = (newUser) => {
             ).then((resp) => {
                 return firestore.collection('utilizadores').doc(resp.user.uid).set({
                     nomeAgente: newUser.nomeAgente,
-                    codAgente: newUser.codAgente
+                    codAgente: newUser.codAgente,
+                    persVistos: newUser.persVistos
                 })
             }).then(() => {
                 dispatch({type: "REGISTO_SUCESSO"})
