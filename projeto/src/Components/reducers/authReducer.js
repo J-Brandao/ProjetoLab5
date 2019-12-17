@@ -1,6 +1,5 @@
 import authTypes from './authTypes';
 
-
 const initalState = {
     authError: null,
 };

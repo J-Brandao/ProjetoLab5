@@ -45,6 +45,7 @@ export const Registar = (newUser) => {
             }).catch(err => {
                 dispatch({type: "ERRO_REGISTO", err})
             })
+
     }
 };
 
